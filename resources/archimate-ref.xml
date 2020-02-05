@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengroup.org/xsd/archimate/3.0/ http://www.opengroup.org/xsd/archimate/3.0/archimate3_Diagram.xsd http://purl.org/dc/elements/1.1/ http://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd" identifier="id-f9013866-8b94-44a1-a570-7b14982366a0">
+  <name xml:lang="nl">informatiemodel</name>
+  <metadata>
+    <schema>Dublin Core</schema>
+    <schemaversion>1.1</schemaversion>
+    <dc:creator>Colin Meerveld</dc:creator>
+  </metadata>
+  <elements>
+    <element identifier="id-116" xsi:type="BusinessObject">
+      <name xml:lang="nl">dossier</name>
+      <documentation xml:lang="nl">beschrijving focus</documentation>
+      <properties>
+        <property propertyDefinitionRef="propid-1">
+          <value xml:lang="nl">0.1</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="id-117" xsi:type="BusinessObject">
+      <name xml:lang="nl">focus dossier</name>
+    </element>
+    <element identifier="id-16" xsi:type="BusinessObject">
+      <name xml:lang="nl">goed</name>
+    </element>
+  </elements>
+  <relationships>
+    <relationship identifier="id-119" source="id-117" target="id-116" xsi:type="Specialization" />
+    <relationship identifier="id-120" source="id-117" target="id-16" xsi:type="Aggregation" />
+  </relationships>
+  <propertyDefinitions>
+    <propertyDefinition identifier="propid-1" type="string">
+      <name>versie</name>
+    </propertyDefinition>
+  </propertyDefinitions>
+</model>

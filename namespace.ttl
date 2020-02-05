@@ -1,0 +1,204 @@
+# baseURI: http://www.w3.org/XML/1998/namespace
+# imports: http://topbraid.org/sxml
+# imports: http://www.linkedmodel.org/schema/dtype
+# prefix: namespace2
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
+@prefix namespace: <http://www.w3.org/XML/1998/namespace#> .
+@prefix namespace1: <http://www.w3.org/XML/1998/namespace#> .
+@prefix namespace2: <http://www.w3.org/XML/1998/namespace#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sxml: <http://topbraid.org/sxml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/1999/xhtml#a>
+  a owl:AnnotationProperty ;
+  rdfs:label "a" ;
+.
+<http://www.w3.org/1999/xhtml#h3>
+  a owl:AnnotationProperty ;
+  rdfs:label "h3" ;
+.
+<http://www.w3.org/1999/xhtml#h4>
+  a owl:AnnotationProperty ;
+  rdfs:label "h4" ;
+.
+<http://www.w3.org/1999/xhtml#p>
+  a owl:AnnotationProperty ;
+  rdfs:label "p" ;
+.
+skos:prefLabel
+  a owl:AnnotationProperty ;
+  rdfs:label "pref label" ;
+.
+<http://www.w3.org/XML/1998/namespace>
+  a owl:Ontology ;
+  <http://www.w3.org/1999/xhtml#a> "Versioning policy for this schema document" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.w3.org/2001/03/xml.xsd" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.w3.org/2001/xml.xsd" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.w3.org/2004/10/xml.xsd" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.w3.org/2007/08/xml.xsd" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.w3.org/2009/01/xml.xsd" ;
+  <http://www.w3.org/1999/xhtml#p> "." ;
+  <http://www.w3.org/1999/xhtml#p> """Previous dated (and unchanging) versions of this schema 
+      document are at:""" ;
+  <http://www.w3.org/1999/xhtml#p> "will not change." ;
+  owl:imports <http://topbraid.org/sxml> ;
+  owl:imports <http://www.linkedmodel.org/schema/dtype> ;
+  owl:versionInfo "Created with TopBraid Composer from the XML Schema(s) http://www.w3.org/XML/1998/namespace, http://www.w3.org/XML/1998/namespace, http://www.w3.org/XML/1998/namespace" ;
+  namespace2:lang "en" ;
+.
+namespace2:EnumeratedValue
+  a owl:Class ;
+  rdfs:label "Enumerated value" ;
+  rdfs:subClassOf dtype:EnumeratedValue ;
+.
+namespace2:SA_default
+  a namespace2:SpecialAttrs-space ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "default"^^xsd:NCName ;
+  rdfs:label "default" ;
+.
+namespace2:SA_preserve
+  a namespace2:SpecialAttrs-space ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "preserve"^^xsd:NCName ;
+  rdfs:label "preserve" ;
+.
+namespace2:SpecialAttrs
+  a owl:Class ;
+  sxml:tag "http://www.w3.org/XML/1998/namespace#specialAttrs" ;
+  rdfs:label "Special attrs" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:ID ;
+      owl:onProperty namespace2:id ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:anyURI ;
+      owl:onProperty namespace2:base ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom namespace2:SpecialAttrs-langDatatype ;
+      owl:onProperty namespace2:lang ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom namespace2:SpecialAttrs-space ;
+      owl:onProperty namespace2:spaceRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty namespace2:base ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty namespace2:id ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty namespace2:lang ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty namespace2:spaceRef ;
+    ] ;
+.
+namespace2:SpecialAttrs-langDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Special attrs-lang datatype" ;
+  rdfs:subClassOf xsd:anySimpleType ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:anySimpleType ;
+    ] ;
+.
+namespace2:SpecialAttrs-space
+  a owl:Class ;
+  rdfs:label "Special attrs-space" ;
+  rdfs:subClassOf namespace2:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NCName ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      namespace2:SA_default
+      namespace2:SA_preserve
+    ) ;
+.
+namespace2:base
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.w3.org/XML/1998/namespace#base" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.w3.org/TR/xmlbase/" ;
+  <http://www.w3.org/1999/xhtml#h3> "base (as an attribute name)" ;
+  <http://www.w3.org/1999/xhtml#p> """denotes an attribute whose value
+       provides a URI to be used as the base for interpreting any
+       relative URIs in the scope of the element on which it
+       appears; its value is inherited.  This name is reserved
+       by virtue of its definition in the XML Base specification.""" ;
+  <http://www.w3.org/1999/xhtml#p> "for information about this attribute." ;
+  rdfs:label "base" ;
+.
+namespace2:id
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.w3.org/XML/1998/namespace#id" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.w3.org/TR/xml-id/" ;
+  <http://www.w3.org/1999/xhtml#h3> "id (as an attribute name)" ;
+  <http://www.w3.org/1999/xhtml#p> """denotes an attribute whose value
+       should be interpreted as if declared to be of type ID.
+       This name is reserved by virtue of its definition in the
+       xml:id specification.""" ;
+  <http://www.w3.org/1999/xhtml#p> "for information about this attribute." ;
+  rdfs:label "id" ;
+.
+namespace2:lang
+  a owl:AnnotationProperty ;
+  sxml:attribute "http://www.w3.org/XML/1998/namespace#lang" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.iana.org/assignments/language-subtag-registry" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.rfc-editor.org/rfc/bcp/bcp47.txt" ;
+  <http://www.w3.org/1999/xhtml#h3> "lang (as an attribute name)" ;
+  <http://www.w3.org/1999/xhtml#h4> "Notes" ;
+  <http://www.w3.org/1999/xhtml#p> """Attempting to install the relevant ISO 2- and 3-letter
+      codes as the enumerated possible values is probably never
+      going to be a realistic possibility.""" ;
+  <http://www.w3.org/1999/xhtml#p> """The union allows for the 'un-declaration' of xml:lang with
+      the empty string.""" ;
+  <http://www.w3.org/1999/xhtml#p> """denotes an attribute whose value
+       is a language code for the natural language of the content of
+       any element; its value is inherited.  This name is reserved
+       by virtue of its definition in the XML specification.""" ;
+  <http://www.w3.org/1999/xhtml#p> "for further information." ;
+  rdfs:label "lang" ;
+.
+namespace2:spaceRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.w3.org/XML/1998/namespace#space" ;
+  <http://www.w3.org/1999/xhtml#h3> "space (as an attribute name)" ;
+  <http://www.w3.org/1999/xhtml#p> """denotes an attribute whose
+       value is a keyword indicating what whitespace processing
+       discipline is intended for the content of the element; its
+       value is inherited.  This name is reserved by virtue of its
+       definition in the XML specification.""" ;
+  rdfs:label "space ref" ;
+.

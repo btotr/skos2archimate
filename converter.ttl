@@ -1,0 +1,128 @@
+# baseURI: http://archimate.politie.nl/skos2archimate
+# imports: http://definities.politie.nl/iv
+# imports: http://spinrdf.org/spin
+# imports: http://www.opengroup.org/xsd/archimate/3.0/
+# imports: http://www.w3.org/XML/1998/namespace
+
+@prefix : <http://archimate.politie.nl/skos2archimate#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix p3.0: <http://www.opengroup.org/xsd/archimate/3.0/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://archimate.politie.nl/skos2archimate>
+  a owl:Ontology ;
+  owl:imports <http://definities.politie.nl/iv> ;
+  owl:imports <http://spinrdf.org/spin> ;
+  owl:imports p3.0: ;
+  owl:imports <http://www.w3.org/XML/1998/namespace> ;
+.
+<http://www.w3.org/2004/02/skos/core#Concept>
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object p3.0:Model ;
+            sp:predicate rdf:type ;
+            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+          ]
+          [
+            sp:object [
+                sp:varName "name" ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+          ]
+          [
+            sp:object p3.0:nameRef ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "name" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "textNode" ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject [
+                sp:varName "name" ;
+              ] ;
+          ]
+          [
+            sp:object <http://topbraid.org/sxml#TextNode> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "textNode" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "labelSpecialisatie" ;
+              ] ;
+            sp:predicate <http://topbraid.org/sxml#text> ;
+            sp:subject [
+                sp:varName "textNode" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object "Dossier"@nl ;
+            sp:predicate <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate <http://www.w3.org/2004/02/skos/core#broader> ;
+            sp:subject [
+                sp:varName "specialisatie" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "labelSpecialisatie" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+            sp:subject [
+                sp:varName "specialisatie" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://archimate.politie.nl/text/" ;
+                    sp:arg2 [
+                        sp:varName "labelSpecialisatie" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "textNode" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://archimate.politie.nl/element/" ;
+                    sp:arg2 [
+                        sp:varName "labelSpecialisatie" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "name" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+.

@@ -1,0 +1,4252 @@
+# baseURI: http://www.opengroup.org/xsd/archimate/3.0/
+# imports: http://topbraid.org/sxml
+# imports: http://www.linkedmodel.org/schema/dtype
+# prefix: p3.02
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix p3.0: <http://www.opengroup.org/xsd/archimate/3.0/> .
+@prefix p3.01: <http://www.opengroup.org/xsd/archimate/3.0/> .
+@prefix p3.02: <http://www.opengroup.org/xsd/archimate/3.0/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sxml: <http://topbraid.org/sxml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:description
+  rdfs:label "description" ;
+.
+p3.02:
+  a owl:Ontology ;
+  dc:description """Notes and rationale
+            -------------------
+            This is the XSD for the ArchiMate 3.0 Model Exchange File Format.
+
+            A number of example models in the exchange file format are available
+            for interoperability testing. For details of how to obtain those
+            files and for further information, see the ArchiMate Model Exchange File Format
+            page at http://www.opengroup.org/xsd/archimate/""" ;
+  dc:description """XSD Data File Information
+            -------------------------
+            Author: The Open Group ArchiMate Exchange Team
+            Start date: 04 Oct 2016
+            Revision date: 18 May 2017
+            XSD Version: 3.0
+            Status: Final
+            Description: The Open Group ArchiMate 3.0 Open Exchange Format""" ;
+  owl:imports <http://topbraid.org/sxml> ;
+  owl:imports <http://www.linkedmodel.org/schema/dtype> ;
+  owl:versionInfo "Created with TopBraid Composer from the XML Schema(s) http://www.opengroup.org/xsd/archimate/3.0/, http://www.opengroup.org/xsd/archimate/3.0/, http://www.opengroup.org/xsd/archimate/3.0/" ;
+.
+p3.02:ATE_Access
+  a p3.02:AccessTypeEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "Access"^^xsd:NMTOKEN ;
+  rdfs:label "Access" ;
+.
+p3.02:ATE_Read
+  a p3.02:AccessTypeEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "Read"^^xsd:NMTOKEN ;
+  rdfs:label "Read" ;
+.
+p3.02:ATE_ReadWrite
+  a p3.02:AccessTypeEnum ;
+  dtype:order "3"^^xsd:nonNegativeInteger ;
+  dtype:value "ReadWrite"^^xsd:NMTOKEN ;
+  rdfs:label "Read write" ;
+.
+p3.02:ATE_Write
+  a p3.02:AccessTypeEnum ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "Write"^^xsd:NMTOKEN ;
+  rdfs:label "Write" ;
+.
+p3.02:Access
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Access" ;
+  rdfs:label "Access" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      dtype:defaultValue "Access" ;
+      owl:allValuesFrom p3.02:AccessTypeEnum ;
+      owl:onProperty p3.02:accessType ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:accessType ;
+    ] ;
+.
+p3.02:AccessTypeEnum
+  a owl:Class ;
+  dc:description "Enumeration of Element types." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/AccessTypeEnum" ;
+  rdfs:label "Access type enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:ATE_Access
+      p3.02:ATE_Read
+      p3.02:ATE_ReadWrite
+      p3.02:ATE_Write
+    ) ;
+.
+p3.02:Aggregation
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Aggregation" ;
+  rdfs:label "Aggregation" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:AllowedElementTypeType
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/AllowedElementTypeType" ;
+  rdfs:label "Allowed element type type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:ElementEnumTypeDatatype ;
+      owl:onProperty p3.02:type ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:type ;
+    ] ;
+.
+p3.02:AllowedRelationshipTypeType
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/AllowedRelationshipTypeType" ;
+  rdfs:label "Allowed relationship type type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:RelationshipTypeEnum ;
+      owl:onProperty p3.02:type ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:type ;
+    ] ;
+.
+p3.02:AndJunction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/AndJunction" ;
+  rdfs:label "And junction" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipConnectorType ;
+.
+p3.02:ApplicationCollaboration
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ApplicationCollaboration" ;
+  rdfs:label "Application collaboration" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ApplicationComponent
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ApplicationComponent" ;
+  rdfs:label "Application component" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ApplicationEvent
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ApplicationEvent" ;
+  rdfs:label "Application event" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ApplicationFunction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ApplicationFunction" ;
+  rdfs:label "Application function" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ApplicationInteraction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ApplicationInteraction" ;
+  rdfs:label "Application interaction" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ApplicationInterface
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ApplicationInterface" ;
+  rdfs:label "Application interface" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ApplicationProcess
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ApplicationProcess" ;
+  rdfs:label "Application process" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ApplicationService
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ApplicationService" ;
+  rdfs:label "Application service" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Artifact
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Artifact" ;
+  rdfs:label "Artifact" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Assessment
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Assessment" ;
+  rdfs:label "Assessment" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Assignment
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Assignment" ;
+  rdfs:label "Assignment" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:Association
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Association" ;
+  rdfs:label "Association" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:BusinessActor
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessActor" ;
+  rdfs:label "Business actor" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessCollaboration
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessCollaboration" ;
+  rdfs:label "Business collaboration" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessEvent
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessEvent" ;
+  rdfs:label "Business event" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessFunction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessFunction" ;
+  rdfs:label "Business function" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessInteraction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessInteraction" ;
+  rdfs:label "Business interaction" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessInterface
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessInterface" ;
+  rdfs:label "Business interface" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessObject
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessObject" ;
+  rdfs:label "Business object" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessProcess
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessProcess" ;
+  rdfs:label "Business process" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessRole
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessRole" ;
+  rdfs:label "Business role" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:BusinessService
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/BusinessService" ;
+  rdfs:label "Business service" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:CTE_Grouping
+  a p3.02:CompositeTypeEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "Grouping"^^xsd:NMTOKEN ;
+  rdfs:label "Grouping" ;
+.
+p3.02:CTE_Location
+  a p3.02:CompositeTypeEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "Location"^^xsd:NMTOKEN ;
+  rdfs:label "Location" ;
+.
+p3.02:Capability
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Capability" ;
+  rdfs:label "Capability" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:CommunicationNetwork
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/CommunicationNetwork" ;
+  rdfs:label "Communication network" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:CompositeType
+  a owl:Class ;
+  dc:description "An abstract type for Composites." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/CompositeType" ;
+  rdfs:label "Composite type" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:ElementType ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+.
+p3.02:CompositeTypeEnum
+  a owl:Class ;
+  dc:description "Enumeration of Composite types." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/CompositeTypeEnum" ;
+  rdfs:label "Composite type enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:CTE_Grouping
+      p3.02:CTE_Location
+    ) ;
+.
+p3.02:Composition
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Composition" ;
+  rdfs:label "Composition" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:ConceptAttributeGroup
+  a owl:Class ;
+  dc:description "Empty. Available for Extension purposes." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConceptAttributeGroup" ;
+  rdfs:label "Concept attribute group" ;
+.
+p3.02:ConceptGroup
+  a owl:Class ;
+  dc:description "Empty. Available for Extension purposes." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConceptGroup" ;
+  rdfs:label "Concept group" ;
+  rdfs:subClassOf p3.02:PropertiesGroup ;
+.
+p3.02:ConceptRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConceptRefAttributeGroup" ;
+  rdfs:label "Concept ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:conceptRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:conceptRefValue ;
+    ] ;
+.
+p3.02:ConceptRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConceptRefGroup" ;
+  rdfs:label "Concept ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:conceptRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:conceptRefRef ;
+    ] ;
+.
+p3.02:ConceptType
+  a owl:Class ;
+  dc:description "This is an abstract class for Concepts (Elements, Relationships, Composites, and RelationConnectors)." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConceptType" ;
+  rdfs:label "Concept type" ;
+  rdfs:subClassOf p3.02:ConceptAttributeGroup ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:ReferenceableType ;
+.
+p3.02:ConcernType
+  a owl:Class ;
+  dc:description "document attribute holds all the concern information." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConcernType" ;
+  rdfs:label "Concern type" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:StakeholdersType ;
+      owl:onProperty p3.02:stakeholdersRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:stakeholdersRef ;
+    ] ;
+.
+p3.02:ConnectionRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConnectionRefAttributeGroup" ;
+  rdfs:label "Connection ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:connectionRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:connectionRefValue ;
+    ] ;
+.
+p3.02:ConnectionRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConnectionRefGroup" ;
+  rdfs:label "Connection ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:connectionRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:connectionRefRef ;
+    ] ;
+.
+p3.02:ConnectionType
+  a owl:Class ;
+  dc:description """Graphical connection type.
+
+                If the 'relationshipRef' attribute is present, the connection should reference an existing ArchiMate relationship.
+
+                If the connection is an ArchiMate relationship type, the connection's label, documentation and properties may be determined
+                (i.e inherited) from those in the referenced ArchiMate relationship. Otherwise the connection's label, documentation and properties
+                 can be provided and will be additional to (or over-ride) those contained in the referenced ArchiMate relationship.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ConnectionType" ;
+  rdfs:label "Connection type" ;
+  rdfs:subClassOf p3.02:ViewConceptType ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:LocationType ;
+      owl:onProperty p3.02:sourceAttachmentRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "1"^^xsd:int ;
+      owl:allValuesFrom p3.02:LocationType ;
+      owl:onProperty p3.02:bendpointRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "2"^^xsd:int ;
+      owl:allValuesFrom p3.02:LocationType ;
+      owl:onProperty p3.02:targetAttachmentRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:source ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:target ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:source ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:sourceAttachmentRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:target ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:targetAttachmentRef ;
+    ] ;
+.
+p3.02:Constraint
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Constraint" ;
+  rdfs:label "Constraint" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Container
+  a owl:Class ;
+  dc:description "Node type to allow a Container in a Artifact. This is a visual grouping container." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Container" ;
+  rdfs:label "Container" ;
+  rdfs:subClassOf p3.02:ViewNodeType ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description """This is to support Nested Nodes on the Diagram
+
+                                The order of sibling nodes in their parent View or Node container as declared in the model
+                                instance dictates the z-order of the nodes. Given nodes A, B, and C as declared in that order,
+                                node B is considered to be in front of node A, node C is considered to be in front of node B, and
+                                node C is considered to be in front of nodes A and B.""" ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ViewNodeType ;
+      owl:onProperty p3.02:nodeRef ;
+    ] ;
+.
+p3.02:Contract
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Contract" ;
+  rdfs:label "Contract" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:CourseOfAction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/CourseOfAction" ;
+  rdfs:label "Course of action" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:DT_boolean
+  a p3.02:DataType ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "boolean"^^xsd:NMTOKEN ;
+  rdfs:label "boolean" ;
+.
+p3.02:DT_currency
+  a p3.02:DataType ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "currency"^^xsd:NMTOKEN ;
+  rdfs:label "currency" ;
+.
+p3.02:DT_date
+  a p3.02:DataType ;
+  dtype:order "3"^^xsd:nonNegativeInteger ;
+  dtype:value "date"^^xsd:NMTOKEN ;
+  rdfs:label "date" ;
+.
+p3.02:DT_number
+  a p3.02:DataType ;
+  dtype:order "5"^^xsd:nonNegativeInteger ;
+  dtype:value "number"^^xsd:NMTOKEN ;
+  rdfs:label "number" ;
+.
+p3.02:DT_string
+  a p3.02:DataType ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "string"^^xsd:NMTOKEN ;
+  rdfs:label "string" ;
+.
+p3.02:DT_time
+  a p3.02:DataType ;
+  dtype:order "4"^^xsd:nonNegativeInteger ;
+  dtype:value "time"^^xsd:NMTOKEN ;
+  rdfs:label "time" ;
+.
+p3.02:DataObject
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/DataObject" ;
+  rdfs:label "Data object" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:DataType
+  a owl:Class ;
+  dc:description "An enumeration of data types." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/DataType" ;
+  rdfs:label "Data type" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:DT_boolean
+      p3.02:DT_currency
+      p3.02:DT_date
+      p3.02:DT_number
+      p3.02:DT_string
+      p3.02:DT_time
+    ) ;
+.
+p3.02:Deliverable
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Deliverable" ;
+  rdfs:label "Deliverable" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Device
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Device" ;
+  rdfs:label "Device" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Diagram
+  a owl:Class ;
+  dc:description "This is a container for all of the Nodes and Connections in the Diagrams." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Diagram" ;
+  rdfs:label "Diagram" ;
+  rdfs:subClassOf p3.02:ViewType ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ViewNodeType ;
+      owl:onProperty p3.02:nodeRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "1"^^xsd:int ;
+      owl:allValuesFrom p3.02:ConnectionType ;
+      owl:onProperty p3.02:connectionRef ;
+    ] ;
+.
+p3.02:DiagramsType
+  a owl:Class ;
+  dc:description "This is a container for all of the Diagrams in the model." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/DiagramsType" ;
+  rdfs:label "Diagrams type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:Diagram ;
+      owl:onProperty p3.02:viewRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewRef ;
+    ] ;
+.
+p3.02:DistributionNetwork
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/DistributionNetwork" ;
+  rdfs:label "Distribution network" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:DocumentationGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/DocumentationGroup" ;
+  rdfs:label "Documentation group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "Documentation of the object." ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:PreservedLangStringType ;
+      owl:onProperty p3.02:documentationRef ;
+    ] ;
+.
+p3.02:Driver
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Driver" ;
+  rdfs:label "Driver" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ETE_AndJunction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "59"^^xsd:nonNegativeInteger ;
+  dtype:value "AndJunction"^^xsd:NMTOKEN ;
+  rdfs:label "And junction" ;
+.
+p3.02:ETE_ApplicationCollaboration
+  a p3.02:ElementTypeEnum ;
+  dtype:order "14"^^xsd:nonNegativeInteger ;
+  dtype:value "ApplicationCollaboration"^^xsd:NMTOKEN ;
+  rdfs:label "Application collaboration" ;
+.
+p3.02:ETE_ApplicationComponent
+  a p3.02:ElementTypeEnum ;
+  dtype:order "13"^^xsd:nonNegativeInteger ;
+  dtype:value "ApplicationComponent"^^xsd:NMTOKEN ;
+  rdfs:label "Application component" ;
+.
+p3.02:ETE_ApplicationEvent
+  a p3.02:ElementTypeEnum ;
+  dtype:order "19"^^xsd:nonNegativeInteger ;
+  dtype:value "ApplicationEvent"^^xsd:NMTOKEN ;
+  rdfs:label "Application event" ;
+.
+p3.02:ETE_ApplicationFunction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "16"^^xsd:nonNegativeInteger ;
+  dtype:value "ApplicationFunction"^^xsd:NMTOKEN ;
+  rdfs:label "Application function" ;
+.
+p3.02:ETE_ApplicationInteraction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "17"^^xsd:nonNegativeInteger ;
+  dtype:value "ApplicationInteraction"^^xsd:NMTOKEN ;
+  rdfs:label "Application interaction" ;
+.
+p3.02:ETE_ApplicationInterface
+  a p3.02:ElementTypeEnum ;
+  dtype:order "15"^^xsd:nonNegativeInteger ;
+  dtype:value "ApplicationInterface"^^xsd:NMTOKEN ;
+  rdfs:label "Application interface" ;
+.
+p3.02:ETE_ApplicationProcess
+  a p3.02:ElementTypeEnum ;
+  dtype:order "18"^^xsd:nonNegativeInteger ;
+  dtype:value "ApplicationProcess"^^xsd:NMTOKEN ;
+  rdfs:label "Application process" ;
+.
+p3.02:ETE_ApplicationService
+  a p3.02:ElementTypeEnum ;
+  dtype:order "20"^^xsd:nonNegativeInteger ;
+  dtype:value "ApplicationService"^^xsd:NMTOKEN ;
+  rdfs:label "Application service" ;
+.
+p3.02:ETE_Artifact
+  a p3.02:ElementTypeEnum ;
+  dtype:order "34"^^xsd:nonNegativeInteger ;
+  dtype:value "Artifact"^^xsd:NMTOKEN ;
+  rdfs:label "Artifact" ;
+.
+p3.02:ETE_Assessment
+  a p3.02:ElementTypeEnum ;
+  dtype:order "41"^^xsd:nonNegativeInteger ;
+  dtype:value "Assessment"^^xsd:NMTOKEN ;
+  rdfs:label "Assessment" ;
+.
+p3.02:ETE_BusinessActor
+  a p3.02:ElementTypeEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessActor"^^xsd:NMTOKEN ;
+  rdfs:label "Business actor" ;
+.
+p3.02:ETE_BusinessCollaboration
+  a p3.02:ElementTypeEnum ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessCollaboration"^^xsd:NMTOKEN ;
+  rdfs:label "Business collaboration" ;
+.
+p3.02:ETE_BusinessEvent
+  a p3.02:ElementTypeEnum ;
+  dtype:order "7"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessEvent"^^xsd:NMTOKEN ;
+  rdfs:label "Business event" ;
+.
+p3.02:ETE_BusinessFunction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "5"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessFunction"^^xsd:NMTOKEN ;
+  rdfs:label "Business function" ;
+.
+p3.02:ETE_BusinessInteraction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "6"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessInteraction"^^xsd:NMTOKEN ;
+  rdfs:label "Business interaction" ;
+.
+p3.02:ETE_BusinessInterface
+  a p3.02:ElementTypeEnum ;
+  dtype:order "3"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessInterface"^^xsd:NMTOKEN ;
+  rdfs:label "Business interface" ;
+.
+p3.02:ETE_BusinessObject
+  a p3.02:ElementTypeEnum ;
+  dtype:order "9"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessObject"^^xsd:NMTOKEN ;
+  rdfs:label "Business object" ;
+.
+p3.02:ETE_BusinessProcess
+  a p3.02:ElementTypeEnum ;
+  dtype:order "4"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessProcess"^^xsd:NMTOKEN ;
+  rdfs:label "Business process" ;
+.
+p3.02:ETE_BusinessRole
+  a p3.02:ElementTypeEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessRole"^^xsd:NMTOKEN ;
+  rdfs:label "Business role" ;
+.
+p3.02:ETE_BusinessService
+  a p3.02:ElementTypeEnum ;
+  dtype:order "8"^^xsd:nonNegativeInteger ;
+  dtype:value "BusinessService"^^xsd:NMTOKEN ;
+  rdfs:label "Business service" ;
+.
+p3.02:ETE_Capability
+  a p3.02:ElementTypeEnum ;
+  dtype:order "50"^^xsd:nonNegativeInteger ;
+  dtype:value "Capability"^^xsd:NMTOKEN ;
+  rdfs:label "Capability" ;
+.
+p3.02:ETE_CommunicationNetwork
+  a p3.02:ElementTypeEnum ;
+  dtype:order "28"^^xsd:nonNegativeInteger ;
+  dtype:value "CommunicationNetwork"^^xsd:NMTOKEN ;
+  rdfs:label "Communication network" ;
+.
+p3.02:ETE_Constraint
+  a p3.02:ElementTypeEnum ;
+  dtype:order "46"^^xsd:nonNegativeInteger ;
+  dtype:value "Constraint"^^xsd:NMTOKEN ;
+  rdfs:label "Constraint" ;
+.
+p3.02:ETE_Contract
+  a p3.02:ElementTypeEnum ;
+  dtype:order "10"^^xsd:nonNegativeInteger ;
+  dtype:value "Contract"^^xsd:NMTOKEN ;
+  rdfs:label "Contract" ;
+.
+p3.02:ETE_CourseOfAction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "51"^^xsd:nonNegativeInteger ;
+  dtype:value "CourseOfAction"^^xsd:NMTOKEN ;
+  rdfs:label "Course of action" ;
+.
+p3.02:ETE_DataObject
+  a p3.02:ElementTypeEnum ;
+  dtype:order "21"^^xsd:nonNegativeInteger ;
+  dtype:value "DataObject"^^xsd:NMTOKEN ;
+  rdfs:label "Data object" ;
+.
+p3.02:ETE_Deliverable
+  a p3.02:ElementTypeEnum ;
+  dtype:order "53"^^xsd:nonNegativeInteger ;
+  dtype:value "Deliverable"^^xsd:NMTOKEN ;
+  rdfs:label "Deliverable" ;
+.
+p3.02:ETE_Device
+  a p3.02:ElementTypeEnum ;
+  dtype:order "23"^^xsd:nonNegativeInteger ;
+  dtype:value "Device"^^xsd:NMTOKEN ;
+  rdfs:label "Device" ;
+.
+p3.02:ETE_DistributionNetwork
+  a p3.02:ElementTypeEnum ;
+  dtype:order "37"^^xsd:nonNegativeInteger ;
+  dtype:value "DistributionNetwork"^^xsd:NMTOKEN ;
+  rdfs:label "Distribution network" ;
+.
+p3.02:ETE_Driver
+  a p3.02:ElementTypeEnum ;
+  dtype:order "40"^^xsd:nonNegativeInteger ;
+  dtype:value "Driver"^^xsd:NMTOKEN ;
+  rdfs:label "Driver" ;
+.
+p3.02:ETE_Equipment
+  a p3.02:ElementTypeEnum ;
+  dtype:order "35"^^xsd:nonNegativeInteger ;
+  dtype:value "Equipment"^^xsd:NMTOKEN ;
+  rdfs:label "Equipment" ;
+.
+p3.02:ETE_Facility
+  a p3.02:ElementTypeEnum ;
+  dtype:order "36"^^xsd:nonNegativeInteger ;
+  dtype:value "Facility"^^xsd:NMTOKEN ;
+  rdfs:label "Facility" ;
+.
+p3.02:ETE_Gap
+  a p3.02:ElementTypeEnum ;
+  dtype:order "56"^^xsd:nonNegativeInteger ;
+  dtype:value "Gap"^^xsd:NMTOKEN ;
+  rdfs:label "Gap" ;
+.
+p3.02:ETE_Goal
+  a p3.02:ElementTypeEnum ;
+  dtype:order "42"^^xsd:nonNegativeInteger ;
+  dtype:value "Goal"^^xsd:NMTOKEN ;
+  rdfs:label "Goal" ;
+.
+p3.02:ETE_Grouping
+  a p3.02:ElementTypeEnum ;
+  dtype:order "57"^^xsd:nonNegativeInteger ;
+  dtype:value "Grouping"^^xsd:NMTOKEN ;
+  rdfs:label "Grouping" ;
+.
+p3.02:ETE_ImplementationEvent
+  a p3.02:ElementTypeEnum ;
+  dtype:order "54"^^xsd:nonNegativeInteger ;
+  dtype:value "ImplementationEvent"^^xsd:NMTOKEN ;
+  rdfs:label "Implementation event" ;
+.
+p3.02:ETE_Location
+  a p3.02:ElementTypeEnum ;
+  dtype:order "58"^^xsd:nonNegativeInteger ;
+  dtype:value "Location"^^xsd:NMTOKEN ;
+  rdfs:label "Location" ;
+.
+p3.02:ETE_Material
+  a p3.02:ElementTypeEnum ;
+  dtype:order "38"^^xsd:nonNegativeInteger ;
+  dtype:value "Material"^^xsd:NMTOKEN ;
+  rdfs:label "Material" ;
+.
+p3.02:ETE_Meaning
+  a p3.02:ElementTypeEnum ;
+  dtype:order "47"^^xsd:nonNegativeInteger ;
+  dtype:value "Meaning"^^xsd:NMTOKEN ;
+  rdfs:label "Meaning" ;
+.
+p3.02:ETE_Node
+  a p3.02:ElementTypeEnum ;
+  dtype:order "22"^^xsd:nonNegativeInteger ;
+  dtype:value "Node"^^xsd:NMTOKEN ;
+  rdfs:label "Node" ;
+.
+p3.02:ETE_OrJunction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "60"^^xsd:nonNegativeInteger ;
+  dtype:value "OrJunction"^^xsd:NMTOKEN ;
+  rdfs:label "Or junction" ;
+.
+p3.02:ETE_Outcome
+  a p3.02:ElementTypeEnum ;
+  dtype:order "43"^^xsd:nonNegativeInteger ;
+  dtype:value "Outcome"^^xsd:NMTOKEN ;
+  rdfs:label "Outcome" ;
+.
+p3.02:ETE_Path
+  a p3.02:ElementTypeEnum ;
+  dtype:order "27"^^xsd:nonNegativeInteger ;
+  dtype:value "Path"^^xsd:NMTOKEN ;
+  rdfs:label "Path" ;
+.
+p3.02:ETE_Plateau
+  a p3.02:ElementTypeEnum ;
+  dtype:order "55"^^xsd:nonNegativeInteger ;
+  dtype:value "Plateau"^^xsd:NMTOKEN ;
+  rdfs:label "Plateau" ;
+.
+p3.02:ETE_Principle
+  a p3.02:ElementTypeEnum ;
+  dtype:order "44"^^xsd:nonNegativeInteger ;
+  dtype:value "Principle"^^xsd:NMTOKEN ;
+  rdfs:label "Principle" ;
+.
+p3.02:ETE_Product
+  a p3.02:ElementTypeEnum ;
+  dtype:order "12"^^xsd:nonNegativeInteger ;
+  dtype:value "Product"^^xsd:NMTOKEN ;
+  rdfs:label "Product" ;
+.
+p3.02:ETE_Representation
+  a p3.02:ElementTypeEnum ;
+  dtype:order "11"^^xsd:nonNegativeInteger ;
+  dtype:value "Representation"^^xsd:NMTOKEN ;
+  rdfs:label "Representation" ;
+.
+p3.02:ETE_Requirement
+  a p3.02:ElementTypeEnum ;
+  dtype:order "45"^^xsd:nonNegativeInteger ;
+  dtype:value "Requirement"^^xsd:NMTOKEN ;
+  rdfs:label "Requirement" ;
+.
+p3.02:ETE_Resource
+  a p3.02:ElementTypeEnum ;
+  dtype:order "49"^^xsd:nonNegativeInteger ;
+  dtype:value "Resource"^^xsd:NMTOKEN ;
+  rdfs:label "Resource" ;
+.
+p3.02:ETE_Stakeholder
+  a p3.02:ElementTypeEnum ;
+  dtype:order "39"^^xsd:nonNegativeInteger ;
+  dtype:value "Stakeholder"^^xsd:NMTOKEN ;
+  rdfs:label "Stakeholder" ;
+.
+p3.02:ETE_SystemSoftware
+  a p3.02:ElementTypeEnum ;
+  dtype:order "24"^^xsd:nonNegativeInteger ;
+  dtype:value "SystemSoftware"^^xsd:NMTOKEN ;
+  rdfs:label "System software" ;
+.
+p3.02:ETE_TechnologyCollaboration
+  a p3.02:ElementTypeEnum ;
+  dtype:order "25"^^xsd:nonNegativeInteger ;
+  dtype:value "TechnologyCollaboration"^^xsd:NMTOKEN ;
+  rdfs:label "Technology collaboration" ;
+.
+p3.02:ETE_TechnologyEvent
+  a p3.02:ElementTypeEnum ;
+  dtype:order "32"^^xsd:nonNegativeInteger ;
+  dtype:value "TechnologyEvent"^^xsd:NMTOKEN ;
+  rdfs:label "Technology event" ;
+.
+p3.02:ETE_TechnologyFunction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "29"^^xsd:nonNegativeInteger ;
+  dtype:value "TechnologyFunction"^^xsd:NMTOKEN ;
+  rdfs:label "Technology function" ;
+.
+p3.02:ETE_TechnologyInteraction
+  a p3.02:ElementTypeEnum ;
+  dtype:order "31"^^xsd:nonNegativeInteger ;
+  dtype:value "TechnologyInteraction"^^xsd:NMTOKEN ;
+  rdfs:label "Technology interaction" ;
+.
+p3.02:ETE_TechnologyInterface
+  a p3.02:ElementTypeEnum ;
+  dtype:order "26"^^xsd:nonNegativeInteger ;
+  dtype:value "TechnologyInterface"^^xsd:NMTOKEN ;
+  rdfs:label "Technology interface" ;
+.
+p3.02:ETE_TechnologyProcess
+  a p3.02:ElementTypeEnum ;
+  dtype:order "30"^^xsd:nonNegativeInteger ;
+  dtype:value "TechnologyProcess"^^xsd:NMTOKEN ;
+  rdfs:label "Technology process" ;
+.
+p3.02:ETE_TechnologyService
+  a p3.02:ElementTypeEnum ;
+  dtype:order "33"^^xsd:nonNegativeInteger ;
+  dtype:value "TechnologyService"^^xsd:NMTOKEN ;
+  rdfs:label "Technology service" ;
+.
+p3.02:ETE_Value
+  a p3.02:ElementTypeEnum ;
+  dtype:order "48"^^xsd:nonNegativeInteger ;
+  dtype:value "Value"^^xsd:NMTOKEN ;
+  rdfs:label "Value" ;
+.
+p3.02:ETE_WorkPackage
+  a p3.02:ElementTypeEnum ;
+  dtype:order "52"^^xsd:nonNegativeInteger ;
+  dtype:value "WorkPackage"^^xsd:NMTOKEN ;
+  rdfs:label "Work package" ;
+.
+p3.02:Element
+  a owl:Class ;
+  dc:description """Node type to allow an Element in a Artifact.
+
+                The node's label, documentation and properties may be determined
+                (i.e inherited) from those in the referenced ArchiMate element. Otherwise the node's label, documentation and properties
+                can be provided and will be additional to (or over-ride) those contained in the referenced ArchiMate element.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Element" ;
+  rdfs:label "Element" ;
+  rdfs:subClassOf p3.02:Container ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "If the 'elementRef' restrictions will only allow references to an existing ArchiMate element." ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:elementRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:elementRefValue ;
+    ] ;
+.
+p3.02:ElementEnumTypeDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Element enum type datatype" ;
+  rdfs:subClassOf xsd:anySimpleType ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:anySimpleType ;
+    ] ;
+.
+p3.02:ElementRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ElementRefAttributeGroup" ;
+  rdfs:label "Element ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:elementRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:elementRefValue ;
+    ] ;
+.
+p3.02:ElementRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ElementRefGroup" ;
+  rdfs:label "Element ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:elementRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:elementRefRef ;
+    ] ;
+.
+p3.02:ElementType
+  a owl:Class ;
+  dc:description """A base element type that can be extended by concrete ArchiMate types.
+
+                Note that ElementType is abstract, so one must have derived types of this type. this is indicated in xml
+                by having a tag name of \"element\" and an attribute of xsi:type=\"BusinessRole\" where BusinessRole is
+                a derived type from ElementType.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ElementType" ;
+  rdfs:label "Element type" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:ConceptType ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+.
+p3.02:ElementTypeEnum
+  a owl:Class ;
+  dc:description "Enumeration of Element types." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ElementTypeEnum" ;
+  rdfs:label "Element type enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:ETE_AndJunction
+      p3.02:ETE_ApplicationCollaboration
+      p3.02:ETE_ApplicationComponent
+      p3.02:ETE_ApplicationEvent
+      p3.02:ETE_ApplicationFunction
+      p3.02:ETE_ApplicationInteraction
+      p3.02:ETE_ApplicationInterface
+      p3.02:ETE_ApplicationProcess
+      p3.02:ETE_ApplicationService
+      p3.02:ETE_Artifact
+      p3.02:ETE_Assessment
+      p3.02:ETE_BusinessActor
+      p3.02:ETE_BusinessCollaboration
+      p3.02:ETE_BusinessEvent
+      p3.02:ETE_BusinessFunction
+      p3.02:ETE_BusinessInteraction
+      p3.02:ETE_BusinessInterface
+      p3.02:ETE_BusinessObject
+      p3.02:ETE_BusinessProcess
+      p3.02:ETE_BusinessRole
+      p3.02:ETE_BusinessService
+      p3.02:ETE_Capability
+      p3.02:ETE_CommunicationNetwork
+      p3.02:ETE_Constraint
+      p3.02:ETE_Contract
+      p3.02:ETE_CourseOfAction
+      p3.02:ETE_DataObject
+      p3.02:ETE_Deliverable
+      p3.02:ETE_Device
+      p3.02:ETE_DistributionNetwork
+      p3.02:ETE_Driver
+      p3.02:ETE_Equipment
+      p3.02:ETE_Facility
+      p3.02:ETE_Gap
+      p3.02:ETE_Goal
+      p3.02:ETE_Grouping
+      p3.02:ETE_ImplementationEvent
+      p3.02:ETE_Location
+      p3.02:ETE_Material
+      p3.02:ETE_Meaning
+      p3.02:ETE_Node
+      p3.02:ETE_OrJunction
+      p3.02:ETE_Outcome
+      p3.02:ETE_Path
+      p3.02:ETE_Plateau
+      p3.02:ETE_Principle
+      p3.02:ETE_Product
+      p3.02:ETE_Representation
+      p3.02:ETE_Requirement
+      p3.02:ETE_Resource
+      p3.02:ETE_Stakeholder
+      p3.02:ETE_SystemSoftware
+      p3.02:ETE_TechnologyCollaboration
+      p3.02:ETE_TechnologyEvent
+      p3.02:ETE_TechnologyFunction
+      p3.02:ETE_TechnologyInteraction
+      p3.02:ETE_TechnologyInterface
+      p3.02:ETE_TechnologyProcess
+      p3.02:ETE_TechnologyService
+      p3.02:ETE_Value
+      p3.02:ETE_WorkPackage
+    ) ;
+.
+p3.02:ElementsType
+  a owl:Class ;
+  dc:description "This is a container for the elements of the model." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ElementsType" ;
+  rdfs:label "Elements type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ElementType ;
+      owl:onProperty p3.02:elementRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:elementRef ;
+    ] ;
+.
+p3.02:EnumeratedValue
+  a owl:Class ;
+  rdfs:label "Enumerated value" ;
+  rdfs:subClassOf dtype:EnumeratedValue ;
+.
+p3.02:Equipment
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Equipment" ;
+  rdfs:label "Equipment" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:FSE_bold
+  a p3.02:FontStyleEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "bold"^^xsd:NMTOKEN ;
+  rdfs:label "bold" ;
+.
+p3.02:FSE_italic
+  a p3.02:FontStyleEnum ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "italic"^^xsd:NMTOKEN ;
+  rdfs:label "italic" ;
+.
+p3.02:FSE_plain
+  a p3.02:FontStyleEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "plain"^^xsd:NMTOKEN ;
+  rdfs:label "plain" ;
+.
+p3.02:FSE_underline
+  a p3.02:FontStyleEnum ;
+  dtype:order "3"^^xsd:nonNegativeInteger ;
+  dtype:value "underline"^^xsd:NMTOKEN ;
+  rdfs:label "underline" ;
+.
+p3.02:Facility
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Facility" ;
+  rdfs:label "Facility" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Flow
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Flow" ;
+  rdfs:label "Flow" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:FontStyleEnum
+  a owl:Class ;
+  dc:description """A value describing the style of the font. Style values can be combined
+                and shall be separated by a space. If no style values are declared, a default
+                style is to be assumed. Declaring a style of plain implies that no styling (bold, italic,
+                underline) shall be used by the receiver.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/FontStyleEnum" ;
+  rdfs:label "Font style enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:FSE_bold
+      p3.02:FSE_italic
+      p3.02:FSE_plain
+      p3.02:FSE_underline
+    ) ;
+.
+p3.02:FontStyleTypeDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Font style type datatype" ;
+  rdfs:subClassOf xsd:anySimpleType ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:anySimpleType ;
+    ] ;
+.
+p3.02:FontType
+  a owl:Class ;
+  dc:description "Font type." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/FontType" ;
+  rdfs:label "Font type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "Size is given in points." ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:NonNegativeHalfGranularityDecimalDatatype ;
+      owl:onProperty p3.02:size ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:RGBColorType ;
+      owl:onProperty p3.02:colorRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:FontStyleTypeDatatype ;
+      owl:onProperty p3.02:style ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty p3.02:name ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:colorRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:name ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:size ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:style ;
+    ] ;
+.
+p3.02:Gap
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Gap" ;
+  rdfs:label "Gap" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Goal
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Goal" ;
+  rdfs:label "Goal" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Grouping
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Grouping" ;
+  rdfs:label "Grouping" ;
+  rdfs:subClassOf p3.02:CompositeType ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/Grp.any>
+  a owl:Class ;
+  dc:description """Any namespace element from any namespace may be included within an \"any\" element. The
+                namespace for the imported element must be defined in the instance, and the schema must be imported.
+                The extension has a definition of \"strict\" i.e. they must have their own namespace.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/grp.any" ;
+  rdfs:label "Grp.any" ;
+.
+p3.02:ISE_
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "+"^^xsd:token ;
+  rdfs:label "ISE " ;
+.
+p3.02:ISE_-
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "-"^^xsd:token ;
+  rdfs:label "-" ;
+.
+p3.02:ISE_--
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "3"^^xsd:nonNegativeInteger ;
+  dtype:value "--"^^xsd:token ;
+  rdfs:label "--" ;
+.
+p3.02:ISE_0
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "4"^^xsd:nonNegativeInteger ;
+  dtype:value "0"^^xsd:token ;
+  rdfs:label "0" ;
+.
+p3.02:ISE_1
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "5"^^xsd:nonNegativeInteger ;
+  dtype:value "1"^^xsd:token ;
+  rdfs:label "1" ;
+.
+p3.02:ISE_10
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "14"^^xsd:nonNegativeInteger ;
+  dtype:value "10"^^xsd:token ;
+  rdfs:label "10" ;
+.
+p3.02:ISE_2
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "6"^^xsd:nonNegativeInteger ;
+  dtype:value "2"^^xsd:token ;
+  rdfs:label "2" ;
+.
+p3.02:ISE_3
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "7"^^xsd:nonNegativeInteger ;
+  dtype:value "3"^^xsd:token ;
+  rdfs:label "3" ;
+.
+p3.02:ISE_4
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "8"^^xsd:nonNegativeInteger ;
+  dtype:value "4"^^xsd:token ;
+  rdfs:label "4" ;
+.
+p3.02:ISE_5
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "9"^^xsd:nonNegativeInteger ;
+  dtype:value "5"^^xsd:token ;
+  rdfs:label "5" ;
+.
+p3.02:ISE_6
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "10"^^xsd:nonNegativeInteger ;
+  dtype:value "6"^^xsd:token ;
+  rdfs:label "6" ;
+.
+p3.02:ISE_7
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "11"^^xsd:nonNegativeInteger ;
+  dtype:value "7"^^xsd:token ;
+  rdfs:label "7" ;
+.
+p3.02:ISE_8
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "12"^^xsd:nonNegativeInteger ;
+  dtype:value "8"^^xsd:token ;
+  rdfs:label "8" ;
+.
+p3.02:ISE_9
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "13"^^xsd:nonNegativeInteger ;
+  dtype:value "9"^^xsd:token ;
+  rdfs:label "9" ;
+.
+p3.02:ISE__0
+  a p3.02:InfluenceStrengthEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "++"^^xsd:token ;
+  rdfs:label " 0" ;
+.
+p3.02:IdentifierGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/IdentifierGroup" ;
+  rdfs:label "Identifier group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:ID ;
+      owl:onProperty p3.02:identifier ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:identifier ;
+    ] ;
+.
+p3.02:ImplementationEvent
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ImplementationEvent" ;
+  rdfs:label "Implementation event" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Influence
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Influence" ;
+  rdfs:label "Influence" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description """This Attribute is only meaningful for Influence RelationshipType. This is optional for the Influence
+                            RelationshipType.""" ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:InfluenceModifierTypeDatatype ;
+      owl:onProperty p3.02:modifier ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:modifier ;
+    ] ;
+.
+p3.02:InfluenceModifierTypeDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Influence modifier type datatype" ;
+  rdfs:subClassOf xsd:anySimpleType ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:anySimpleType ;
+    ] ;
+.
+p3.02:InfluenceStrengthEnum
+  a owl:Class ;
+  dc:description "Enumeration of Influence Strength types. These are suggestions." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/InfluenceStrengthEnum" ;
+  rdfs:label "Influence strength enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:token ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:ISE_
+      p3.02:ISE_-
+      p3.02:ISE_--
+      p3.02:ISE_0
+      p3.02:ISE_1
+      p3.02:ISE_10
+      p3.02:ISE_2
+      p3.02:ISE_3
+      p3.02:ISE_4
+      p3.02:ISE_5
+      p3.02:ISE_6
+      p3.02:ISE_7
+      p3.02:ISE_8
+      p3.02:ISE_9
+      p3.02:ISE__0
+    ) ;
+.
+p3.02:Label
+  a owl:Class ;
+  dc:description "Node type to allow a Label in a Artifact. the \"label\" element holds the info for the Note." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Label" ;
+  rdfs:label "Label" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf p3.02:ViewNodeType ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description """conceptRef is a reference to an concept for this particular label, along with the attributeRef
+                            which references the particular concept's part which this label represents.""" ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:conceptRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description """conceptRef is a reference to an concept for this particular label, along with the partRef
+                            which references the particular concept's part which this label represents. If this attribute
+                            is set, then there is no need to add a label tag in the Label parent (since it is contained in the model).
+                            the XPATH statement is meant to be interpreted in the context of what the conceptRef points to.""" ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom <http://www.opengroup.org/xsd/archimate/3.0/XPATH_2.0_ExpressionDatatype> ;
+      owl:onProperty p3.02:xpathPart ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:conceptRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:xpathPart ;
+    ] ;
+.
+p3.02:LabelGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/LabelGroup" ;
+  rdfs:label "Label group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:LangStringType ;
+      owl:onProperty p3.02:labelRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:labelRef ;
+    ] ;
+.
+p3.02:LangStringType
+  a owl:Class ;
+  dc:description "A base string type for multi-language strings." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/LangStringType" ;
+  rdfs:label "Lang string type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:LangStringType-langDatatype ;
+      owl:onProperty p3.02:lang ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:lang ;
+    ] ;
+.
+p3.02:LangStringType-langDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Lang string type-lang datatype" ;
+  rdfs:subClassOf xsd:anySimpleType ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:anySimpleType ;
+    ] ;
+.
+p3.02:Line
+  a owl:Class ;
+  dc:description "Line on the diagram." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Line" ;
+  rdfs:label "Line" ;
+  rdfs:subClassOf p3.02:ConnectionType ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+.
+p3.02:Location
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Location" ;
+  rdfs:label "Location" ;
+  rdfs:subClassOf p3.02:CompositeType ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+.
+p3.02:LocationGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/LocationGroup" ;
+  rdfs:label "Location group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description """The x (towards the right, associated with width) attribute from the Top,Left (i.e. 0,0) corner of the diagram to the
+                    Top, Left corner of the bounding box of the concept.""" ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:nonNegativeInteger ;
+      owl:onProperty p3.02:x ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description """The y (towards the bottom, associated with height) attribute from the Top,Left (i.e. 0,0) corner of the diagram to the
+                    Top, Left corner of the bounding box of the concept.""" ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:nonNegativeInteger ;
+      owl:onProperty p3.02:y ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:x ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:y ;
+    ] ;
+.
+p3.02:LocationType
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/LocationType" ;
+  rdfs:label "Location type" ;
+  rdfs:subClassOf p3.02:LocationGroup ;
+.
+p3.02:Material
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Material" ;
+  rdfs:label "Material" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Meaning
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Meaning" ;
+  rdfs:label "Meaning" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:MetadataType
+  a owl:Class ;
+  dc:description """An instance of the meta-data element contains data structures that declare descriptive information
+                about a meta-data element's parent only.
+
+                One or more different meta-data models may be declared as child extensions of a meta-data element.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/MetadataType" ;
+  rdfs:label "Metadata type" ;
+  rdfs:subClassOf p3.02:SchemaInfoGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:SchemaInfoType ;
+      owl:onProperty p3.02:schemaInfoRef ;
+    ] ;
+.
+p3.02:Model
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/model" ;
+  rdfs:label "Model" ;
+  rdfs:subClassOf p3.02:ModelType ;
+.
+p3.02:ModelType
+  a owl:Class ;
+  dc:description """This is the root model type.
+                It is a container for the elements, relationships, diagrams and organizations of the model.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ModelType" ;
+  rdfs:label "Model type" ;
+  rdfs:subClassOf p3.02:NamedReferenceableType ;
+  rdfs:subClassOf p3.02:PropertiesGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "Specifies the version of the model." ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty p3.02:version ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "The \"elements\" element is optional and is a container for all elements." ;
+      sxml:isAttribute false ;
+      sxml:order "1"^^xsd:int ;
+      owl:allValuesFrom p3.02:ElementsType ;
+      owl:onProperty p3.02:elementsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "The \"metadata\" element is the optional meta-data for the model." ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:MetadataType ;
+      owl:onProperty p3.02:metadataRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description """The \"organizations\" element is optional and is a container for the tree nodes of the different
+                                structural organization of model elements and relationships.""" ;
+      sxml:isAttribute false ;
+      sxml:order "3"^^xsd:int ;
+      owl:allValuesFrom p3.02:OrganizationsType ;
+      owl:onProperty p3.02:organizationsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "The \"relationships\" element is optional and is a container for all relationships." ;
+      sxml:isAttribute false ;
+      sxml:order "2"^^xsd:int ;
+      owl:allValuesFrom p3.02:RelationshipsType ;
+      owl:onProperty p3.02:relationshipsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "4"^^xsd:int ;
+      owl:allValuesFrom p3.02:PropertyDefinitionsType ;
+      owl:onProperty p3.02:propertyDefinitionsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:elementsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:metadataRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:propertyDefinitionsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:relationshipsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:version ;
+    ] ;
+.
+p3.02:ModelingNoteType
+  a owl:Class ;
+  dc:description """This is a set of notes to the modeler on how to use and model with this viewpoint. Could contain rules
+                or constraints. The part hold the information for this element.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ModelingNoteType" ;
+  rdfs:label "Modeling note type" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "This attribute expresses a type for the notes, e.g. OCL for OCL rules." ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty p3.02:type ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:type ;
+    ] ;
+.
+p3.02:NameGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/NameGroup" ;
+  rdfs:label "Name group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:LangStringType ;
+      owl:onProperty p3.02:nameRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:nameRef ;
+    ] ;
+.
+p3.02:NamedReferenceableType
+  a owl:Class ;
+  dc:description "ObjectType which requires a Name and an ID." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/NamedReferenceableType" ;
+  rdfs:label "Named referenceable type" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:IdentifierGroup ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:ReferenceableType ;
+.
+p3.02:NestingRelationship
+  a owl:Class ;
+  dc:description "Connector for a Nested Relationship on an element." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/NestingRelationship" ;
+  rdfs:label "Nesting relationship" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf p3.02:Relationship ;
+.
+p3.02:Node
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Node" ;
+  rdfs:label "Node" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:NodeRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/NodeRefAttributeGroup" ;
+  rdfs:label "Node ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:nodeRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:nodeRefValue ;
+    ] ;
+.
+p3.02:NodeRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/NodeRefGroup" ;
+  rdfs:label "Node ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:nodeRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:nodeRefRef ;
+    ] ;
+.
+p3.02:NonNegativeDecimalDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Non negative decimal datatype" ;
+  rdfs:subClassOf xsd:decimal ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:decimal ;
+      owl:withRestrictions (
+          [
+            xsd:minInclusive "0"^^xsd:decimal ;
+          ]
+        ) ;
+    ] ;
+.
+p3.02:NonNegativeHalfGranularityDecimalDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Non negative half granularity decimal datatype" ;
+  rdfs:subClassOf p3.02:NonNegativeDecimalDatatype ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype p3.02:NonNegativeDecimalDatatype ;
+      owl:withRestrictions (
+          [
+            xsd:pattern "[1-9][0-9]*(\\.0|\\.5)?" ;
+          ]
+        ) ;
+    ] ;
+.
+p3.02:OptionalIdentifierGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/OptionalIdentifierGroup" ;
+  rdfs:label "Optional identifier group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:ID ;
+      owl:onProperty p3.02:identifier ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:identifier ;
+    ] ;
+.
+p3.02:OrJunction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/OrJunction" ;
+  rdfs:label "Or junction" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipConnectorType ;
+.
+p3.02:OrganizationType
+  a owl:Class ;
+  dc:description """An organization element represents a structural node in a particular organization of the model concepts.
+                An organization element may be a parent or sibling of other organization elements,
+                each one representing a unique structural node.
+
+                An organization element may reference an ArchiMate element, ArchiMate relationship,
+                or nothing (in which case it is a structural container)
+
+                An organization has no meaning unless it has at least child organization element.
+
+                Note that Organization must fit into a tree structure (so strictly nested).""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/OrganizationType" ;
+  rdfs:label "Organization type" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf p3.02:OptionalIdentifierGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "identifierRef could refer to anything that has an identifier in the model." ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:identifierRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:OrganizationType ;
+      owl:onProperty p3.02:itemRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:identifierRefValue ;
+    ] ;
+.
+p3.02:OrganizationsType
+  a owl:Class ;
+  dc:description "This is a container for the Organizations of the model." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/OrganizationsType" ;
+  rdfs:label "Organizations type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:OrganizationType ;
+      owl:onProperty p3.02:itemRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:itemRef ;
+    ] ;
+.
+p3.02:Outcome
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Outcome" ;
+  rdfs:label "Outcome" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Path
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Path" ;
+  rdfs:label "Path" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Plateau
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Plateau" ;
+  rdfs:label "Plateau" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:PreservedLangStringType
+  a owl:Class ;
+  dc:description "A base string type for multi-language strings that preserves whitespace." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/PreservedLangStringType" ;
+  rdfs:label "Preserved lang string type" ;
+  rdfs:subClassOf p3.02:LangStringType ;
+.
+p3.02:Principle
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Principle" ;
+  rdfs:label "Principle" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Product
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Product" ;
+  rdfs:label "Product" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:PropertiesGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/PropertiesGroup" ;
+  rdfs:label "Properties group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "Any property instance of the object" ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:PropertiesType ;
+      owl:onProperty p3.02:propertiesRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:propertiesRef ;
+    ] ;
+.
+p3.02:PropertiesType
+  a owl:Class ;
+  dc:description "A container for all of the Property value instances for an object." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/PropertiesType" ;
+  rdfs:label "Properties type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:PropertyType ;
+      owl:onProperty p3.02:propertyRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:propertyRef ;
+    ] ;
+.
+p3.02:PropertyDefinitionRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/PropertyDefinitionRefAttributeGroup" ;
+  rdfs:label "Property definition ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:propertyDefinitionRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:propertyDefinitionRefValue ;
+    ] ;
+.
+p3.02:PropertyDefinitionRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/PropertyDefinitionRefGroup" ;
+  rdfs:label "Property definition ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:propertyDefinitionRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:propertyDefinitionRefRef ;
+    ] ;
+.
+p3.02:PropertyDefinitionType
+  a owl:Class ;
+  dc:description "A Property definition type containing its unique identifier, name, and data type." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/PropertyDefinitionType" ;
+  rdfs:label "Property definition type" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:NamedReferenceableType ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:DataType ;
+      owl:onProperty p3.02:type ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:type ;
+    ] ;
+.
+p3.02:PropertyDefinitionsType
+  a owl:Class ;
+  dc:description "This is a container for the Property definitions in the model." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/PropertyDefinitionsType" ;
+  rdfs:label "Property definitions type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:PropertyDefinitionType ;
+      owl:onProperty p3.02:propertyDefinitionRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:propertyDefinitionRef ;
+    ] ;
+.
+p3.02:PropertyType
+  a owl:Class ;
+  dc:description "A Property instance type declaring the reference to a Property definition and containing the Property value." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/PropertyType" ;
+  rdfs:label "Property type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:LangStringType ;
+      owl:onProperty p3.02:valueRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:propertyDefinitionRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:propertyDefinitionRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:valueRef ;
+    ] ;
+.
+p3.02:RCE_AndJunction
+  a p3.02:RelationshipConnectorEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "AndJunction"^^xsd:NMTOKEN ;
+  rdfs:label "And junction" ;
+.
+p3.02:RCE_OrJunction
+  a p3.02:RelationshipConnectorEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "OrJunction"^^xsd:NMTOKEN ;
+  rdfs:label "Or junction" ;
+.
+p3.02:RGBColorType
+  a owl:Class ;
+  dc:description """RGB Color type.
+                The r, g, b attributes range from 0 - 255.
+                The a (alpha) transparency attribute is optional. 0 = full transparency, 100 = opaque.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RGBColorType" ;
+  rdfs:label "RGBColor type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:RGBColorType-aDatatype ;
+      owl:onProperty p3.02:a ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:RGBValueTypeDatatype ;
+      owl:onProperty p3.02:b ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:RGBValueTypeDatatype ;
+      owl:onProperty p3.02:g ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:RGBValueTypeDatatype ;
+      owl:onProperty p3.02:r ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:b ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:g ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:r ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:a ;
+    ] ;
+.
+p3.02:RGBColorType-aDatatype
+  a rdfs:Datatype ;
+  rdfs:label "RGBColor type-a datatype" ;
+  rdfs:subClassOf xsd:unsignedByte ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:unsignedByte ;
+      owl:withRestrictions (
+          [
+            xsd:maxInclusive "100"^^xsd:unsignedByte ;
+          ]
+          [
+            xsd:minInclusive "0"^^xsd:unsignedByte ;
+          ]
+        ) ;
+    ] ;
+.
+p3.02:RGBValueTypeDatatype
+  a rdfs:Datatype ;
+  rdfs:label "RGBValue type datatype" ;
+  rdfs:subClassOf xsd:unsignedByte ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:unsignedByte ;
+      owl:withRestrictions (
+          [
+            xsd:maxInclusive "255"^^xsd:unsignedByte ;
+          ]
+          [
+            xsd:minInclusive "0"^^xsd:unsignedByte ;
+          ]
+        ) ;
+    ] ;
+.
+p3.02:RTE_Access
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "5"^^xsd:nonNegativeInteger ;
+  dtype:value "Access"^^xsd:NMTOKEN ;
+  rdfs:label "Access" ;
+.
+p3.02:RTE_Aggregation
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "Aggregation"^^xsd:NMTOKEN ;
+  rdfs:label "Aggregation" ;
+.
+p3.02:RTE_Assignment
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "Assignment"^^xsd:NMTOKEN ;
+  rdfs:label "Assignment" ;
+.
+p3.02:RTE_Association
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "10"^^xsd:nonNegativeInteger ;
+  dtype:value "Association"^^xsd:NMTOKEN ;
+  rdfs:label "Association" ;
+.
+p3.02:RTE_Composition
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "Composition"^^xsd:NMTOKEN ;
+  rdfs:label "Composition" ;
+.
+p3.02:RTE_Flow
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "8"^^xsd:nonNegativeInteger ;
+  dtype:value "Flow"^^xsd:NMTOKEN ;
+  rdfs:label "Flow" ;
+.
+p3.02:RTE_Influence
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "6"^^xsd:nonNegativeInteger ;
+  dtype:value "Influence"^^xsd:NMTOKEN ;
+  rdfs:label "Influence" ;
+.
+p3.02:RTE_Realization
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "3"^^xsd:nonNegativeInteger ;
+  dtype:value "Realization"^^xsd:NMTOKEN ;
+  rdfs:label "Realization" ;
+.
+p3.02:RTE_Serving
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "4"^^xsd:nonNegativeInteger ;
+  dtype:value "Serving"^^xsd:NMTOKEN ;
+  rdfs:label "Serving" ;
+.
+p3.02:RTE_Specialization
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "9"^^xsd:nonNegativeInteger ;
+  dtype:value "Specialization"^^xsd:NMTOKEN ;
+  rdfs:label "Specialization" ;
+.
+p3.02:RTE_Triggering
+  a p3.02:RelationshipTypeEnum ;
+  dtype:order "7"^^xsd:nonNegativeInteger ;
+  dtype:value "Triggering"^^xsd:NMTOKEN ;
+  rdfs:label "Triggering" ;
+.
+p3.02:RealElementType
+  a owl:Class ;
+  dc:description "Forces Real Elements to have Names." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RealElementType" ;
+  rdfs:label "Real element type" ;
+  rdfs:subClassOf p3.02:ConceptAttributeGroup ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:ElementType ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:IdentifierGroup ;
+  rdfs:subClassOf p3.02:NameGroup ;
+.
+p3.02:Realization
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Realization" ;
+  rdfs:label "Realization" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:ReferenceType
+  a owl:Class ;
+  dc:description "Generic Reference Type." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ReferenceType" ;
+  rdfs:label "Reference type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:ref ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:ref ;
+    ] ;
+.
+p3.02:ReferenceableType
+  a owl:Class ;
+  dc:description "Something that can be referenced in the model." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ReferenceableType" ;
+  rdfs:label "Referenceable type" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:IdentifierGroup ;
+  rdfs:subClassOf p3.02:NameGroup ;
+.
+p3.02:Relationship
+  a owl:Class ;
+  dc:description "Connector for a Relationship." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Relationship" ;
+  rdfs:label "Relationship" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf p3.02:SourcedConnectionType ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:relationshipRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:relationshipRefValue ;
+    ] ;
+.
+p3.02:RelationshipConnectorEnum
+  a owl:Class ;
+  dc:description "Enumeration of Relationship Connector types." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RelationshipConnectorEnum" ;
+  rdfs:label "Relationship connector enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:RCE_AndJunction
+      p3.02:RCE_OrJunction
+    ) ;
+.
+p3.02:RelationshipConnectorType
+  a owl:Class ;
+  dc:description "An abstract type for RelationshipConnectors. It is treated as an ElementType." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RelationshipConnectorType" ;
+  rdfs:label "Relationship connector type" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:ElementType ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+.
+p3.02:RelationshipRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RelationshipRefAttributeGroup" ;
+  rdfs:label "Relationship ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:relationshipRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:relationshipRefValue ;
+    ] ;
+.
+p3.02:RelationshipRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RelationshipRefGroup" ;
+  rdfs:label "Relationship ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:relationshipRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:relationshipRefRef ;
+    ] ;
+.
+p3.02:RelationshipType
+  a owl:Class ;
+  dc:description """A base relationship type that can be extended by concrete ArchiMate types.
+
+                Note that RelationshipType is abstract, so one must have derived types of this type. this is indicated in xml
+                by having a tag name of \"relationship\" and an attribute of xsi:type=\"AccessRelationship\" where AccessRelationship is
+                a derived type from RelationshipType.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RelationshipType" ;
+  rdfs:label "Relationship type" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:ConceptType ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:source ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:target ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:source ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:target ;
+    ] ;
+.
+p3.02:RelationshipTypeEnum
+  a owl:Class ;
+  dc:description "Enumeration of Relationship types." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RelationshipTypeEnum" ;
+  rdfs:label "Relationship type enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:RTE_Access
+      p3.02:RTE_Aggregation
+      p3.02:RTE_Assignment
+      p3.02:RTE_Association
+      p3.02:RTE_Composition
+      p3.02:RTE_Flow
+      p3.02:RTE_Influence
+      p3.02:RTE_Realization
+      p3.02:RTE_Serving
+      p3.02:RTE_Specialization
+      p3.02:RTE_Triggering
+    ) ;
+.
+p3.02:RelationshipsType
+  a owl:Class ;
+  dc:description "This is a container for the relationships of the model." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/RelationshipsType" ;
+  rdfs:label "Relationships type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:RelationshipType ;
+      owl:onProperty p3.02:relationshipRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:relationshipRef ;
+    ] ;
+.
+p3.02:Representation
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Representation" ;
+  rdfs:label "Representation" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Requirement
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Requirement" ;
+  rdfs:label "Requirement" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Resource
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Resource" ;
+  rdfs:label "Resource" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:SchemaInfoGroup
+  a owl:Class ;
+  dc:description "Provides a wrapper for multiple meta-data sets." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/SchemaInfoGroup" ;
+  rdfs:label "Schema info group" ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "default=\"1.1\"" ;
+      sxml:isAttribute false ;
+      sxml:order "1"^^xsd:int ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty p3.02:schemaversion ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "default=\"http://purl.org/dc/elements/1.1/\"" ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty p3.02:schema ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:schema ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:schemaversion ;
+    ] ;
+.
+p3.02:SchemaInfoType
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/SchemaInfoType" ;
+  rdfs:label "Schema info type" ;
+  rdfs:subClassOf p3.02:SchemaInfoGroup ;
+.
+p3.02:Serving
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Serving" ;
+  rdfs:label "Serving" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:SizeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/SizeGroup" ;
+  rdfs:label "Size group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "The height (associated with y) attribute from the top side to the bottom side of the bounding box of a concept." ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:positiveInteger ;
+      owl:onProperty p3.02:h ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "The width (associated with x) attribute from the Left side to the right side of the bounding box of a concept." ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:positiveInteger ;
+      owl:onProperty p3.02:w ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:h ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:w ;
+    ] ;
+.
+p3.02:SourcedConnectionType
+  a owl:Class ;
+  dc:description "Abstract Type requiring a source and target." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/SourcedConnectionType" ;
+  rdfs:label "Sourced connection type" ;
+  rdfs:subClassOf p3.02:ConnectionType ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:IdentifierGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:source ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:target ;
+    ] ;
+.
+p3.02:Specialization
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Specialization" ;
+  rdfs:label "Specialization" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:Stakeholder
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Stakeholder" ;
+  rdfs:label "Stakeholder" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:StakeholderType
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/StakeholderType" ;
+  rdfs:label "Stakeholder type" ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+.
+p3.02:StakeholdersType
+  a owl:Class ;
+  dc:description "This is a container for all of the Stakeholders in the Concern." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/StakeholdersType" ;
+  rdfs:label "Stakeholders type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:StakeholderType ;
+      owl:onProperty p3.02:stakeholderRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:stakeholderRef ;
+    ] ;
+.
+p3.02:StereotypeRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/StereotypeRefAttributeGroup" ;
+  rdfs:label "Stereotype ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:stereotypeRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:stereotypeRefValue ;
+    ] ;
+.
+p3.02:StereotypeRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/StereotypeRefGroup" ;
+  rdfs:label "Stereotype ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:stereotypeRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:stereotypeRefRef ;
+    ] ;
+.
+p3.02:StyleType
+  a owl:Class ;
+  dc:description """A Style type for a node and a connection.
+                It is a container for style properties such as color, font.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/StyleType" ;
+  rdfs:label "Style type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "An integer value representing the width (thickness) of the lines of each node in pixels." ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:positiveInteger ;
+      owl:onProperty p3.02:lineWidth ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:RGBColorType ;
+      owl:onProperty p3.02:lineColorRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "1"^^xsd:int ;
+      owl:allValuesFrom p3.02:RGBColorType ;
+      owl:onProperty p3.02:fillColorRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "2"^^xsd:int ;
+      owl:allValuesFrom p3.02:FontType ;
+      owl:onProperty p3.02:fontRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:fillColorRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:fontRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:lineColorRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:lineWidth ;
+    ] ;
+.
+p3.02:SystemSoftware
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/SystemSoftware" ;
+  rdfs:label "System software" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:TechnologyCollaboration
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/TechnologyCollaboration" ;
+  rdfs:label "Technology collaboration" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:TechnologyEvent
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/TechnologyEvent" ;
+  rdfs:label "Technology event" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:TechnologyFunction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/TechnologyFunction" ;
+  rdfs:label "Technology function" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:TechnologyInteraction
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/TechnologyInteraction" ;
+  rdfs:label "Technology interaction" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:TechnologyInterface
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/TechnologyInterface" ;
+  rdfs:label "Technology interface" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:TechnologyProcess
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/TechnologyProcess" ;
+  rdfs:label "Technology process" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:TechnologyService
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/TechnologyService" ;
+  rdfs:label "Technology service" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:Triggering
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Triggering" ;
+  rdfs:label "Triggering" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RelationshipType ;
+.
+p3.02:VCE_Coherence
+  a p3.02:ViewpointContentEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "Coherence"^^xsd:NMTOKEN ;
+  rdfs:label "Coherence" ;
+.
+p3.02:VCE_Details
+  a p3.02:ViewpointContentEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "Details"^^xsd:NMTOKEN ;
+  rdfs:label "Details" ;
+.
+p3.02:VCE_Overview
+  a p3.02:ViewpointContentEnum ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "Overview"^^xsd:NMTOKEN ;
+  rdfs:label "Overview" ;
+.
+p3.02:VE_ApplicationCooperation
+  a p3.02:ViewpointsEnum ;
+  dtype:order "10"^^xsd:nonNegativeInteger ;
+  dtype:value "Application Cooperation"^^xsd:token ;
+  rdfs:label "Application cooperation" ;
+.
+p3.02:VE_ApplicationPlatform
+  a p3.02:ViewpointsEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "Application Platform"^^xsd:token ;
+  rdfs:label "Application platform" ;
+.
+p3.02:VE_ApplicationUsage
+  a p3.02:ViewpointsEnum ;
+  dtype:order "7"^^xsd:nonNegativeInteger ;
+  dtype:value "Application Usage"^^xsd:token ;
+  rdfs:label "Application usage" ;
+.
+p3.02:VE_BusinessProcessCooperation
+  a p3.02:ViewpointsEnum ;
+  dtype:order "9"^^xsd:nonNegativeInteger ;
+  dtype:value "Business Process Cooperation"^^xsd:token ;
+  rdfs:label "Business process cooperation" ;
+.
+p3.02:VE_CapabilityMap
+  a p3.02:ViewpointsEnum ;
+  dtype:order "19"^^xsd:nonNegativeInteger ;
+  dtype:value "Capability Map"^^xsd:token ;
+  rdfs:label "Capability map" ;
+.
+p3.02:VE_GoalContribution
+  a p3.02:ViewpointsEnum ;
+  dtype:order "14"^^xsd:nonNegativeInteger ;
+  dtype:value "Goal Contribution"^^xsd:token ;
+  rdfs:label "Goal contribution" ;
+.
+p3.02:VE_GoalRealization
+  a p3.02:ViewpointsEnum ;
+  dtype:order "13"^^xsd:nonNegativeInteger ;
+  dtype:value "Goal Realization"^^xsd:token ;
+  rdfs:label "Goal realization" ;
+.
+p3.02:VE_ImplementationandDeployment
+  a p3.02:ViewpointsEnum ;
+  dtype:order "12"^^xsd:nonNegativeInteger ;
+  dtype:value "Implementation and Deployment"^^xsd:token ;
+  rdfs:label "Implementationand deployment" ;
+.
+p3.02:VE_ImplementationandMigration
+  a p3.02:ViewpointsEnum ;
+  dtype:order "24"^^xsd:nonNegativeInteger ;
+  dtype:value "Implementation and Migration"^^xsd:token ;
+  rdfs:label "Implementationand migration" ;
+.
+p3.02:VE_InformationStructure
+  a p3.02:ViewpointsEnum ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "Information Structure"^^xsd:token ;
+  rdfs:label "Information structure" ;
+.
+p3.02:VE_Layered
+  a p3.02:ViewpointsEnum ;
+  dtype:order "4"^^xsd:nonNegativeInteger ;
+  dtype:value "Layered"^^xsd:token ;
+  rdfs:label "Layered" ;
+.
+p3.02:VE_Migration
+  a p3.02:ViewpointsEnum ;
+  dtype:order "23"^^xsd:nonNegativeInteger ;
+  dtype:value "Migration"^^xsd:token ;
+  rdfs:label "Migration" ;
+.
+p3.02:VE_Motivation
+  a p3.02:ViewpointsEnum ;
+  dtype:order "17"^^xsd:nonNegativeInteger ;
+  dtype:value "Motivation"^^xsd:token ;
+  rdfs:label "Motivation" ;
+.
+p3.02:VE_Organization
+  a p3.02:ViewpointsEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "Organization"^^xsd:token ;
+  rdfs:label "Organization" ;
+.
+p3.02:VE_OutcomeRealization
+  a p3.02:ViewpointsEnum ;
+  dtype:order "20"^^xsd:nonNegativeInteger ;
+  dtype:value "Outcome Realization"^^xsd:token ;
+  rdfs:label "Outcome realization" ;
+.
+p3.02:VE_Physical
+  a p3.02:ViewpointsEnum ;
+  dtype:order "5"^^xsd:nonNegativeInteger ;
+  dtype:value "Physical"^^xsd:token ;
+  rdfs:label "Physical" ;
+.
+p3.02:VE_Principles
+  a p3.02:ViewpointsEnum ;
+  dtype:order "15"^^xsd:nonNegativeInteger ;
+  dtype:value "Principles"^^xsd:token ;
+  rdfs:label "Principles" ;
+.
+p3.02:VE_Product
+  a p3.02:ViewpointsEnum ;
+  dtype:order "6"^^xsd:nonNegativeInteger ;
+  dtype:value "Product"^^xsd:token ;
+  rdfs:label "Product" ;
+.
+p3.02:VE_Project
+  a p3.02:ViewpointsEnum ;
+  dtype:order "22"^^xsd:nonNegativeInteger ;
+  dtype:value "Project"^^xsd:token ;
+  rdfs:label "Project" ;
+.
+p3.02:VE_RequirementsRealization
+  a p3.02:ViewpointsEnum ;
+  dtype:order "16"^^xsd:nonNegativeInteger ;
+  dtype:value "Requirements Realization"^^xsd:token ;
+  rdfs:label "Requirements realization" ;
+.
+p3.02:VE_ResourceMap
+  a p3.02:ViewpointsEnum ;
+  dtype:order "21"^^xsd:nonNegativeInteger ;
+  dtype:value "Resource Map"^^xsd:token ;
+  rdfs:label "Resource map" ;
+.
+p3.02:VE_ServiceRealization
+  a p3.02:ViewpointsEnum ;
+  dtype:order "11"^^xsd:nonNegativeInteger ;
+  dtype:value "Service Realization"^^xsd:token ;
+  rdfs:label "Service realization" ;
+.
+p3.02:VE_Stakeholder
+  a p3.02:ViewpointsEnum ;
+  dtype:order "25"^^xsd:nonNegativeInteger ;
+  dtype:value "Stakeholder"^^xsd:token ;
+  rdfs:label "Stakeholder" ;
+.
+p3.02:VE_Strategy
+  a p3.02:ViewpointsEnum ;
+  dtype:order "18"^^xsd:nonNegativeInteger ;
+  dtype:value "Strategy"^^xsd:token ;
+  rdfs:label "Strategy" ;
+.
+p3.02:VE_Technology
+  a p3.02:ViewpointsEnum ;
+  dtype:order "3"^^xsd:nonNegativeInteger ;
+  dtype:value "Technology"^^xsd:token ;
+  rdfs:label "Technology" ;
+.
+p3.02:VE_TechnologyUsage
+  a p3.02:ViewpointsEnum ;
+  dtype:order "8"^^xsd:nonNegativeInteger ;
+  dtype:value "Technology Usage"^^xsd:token ;
+  rdfs:label "Technology usage" ;
+.
+p3.02:VPE_Deciding
+  a p3.02:ViewpointPurposeEnum ;
+  dtype:order "1"^^xsd:nonNegativeInteger ;
+  dtype:value "Deciding"^^xsd:NMTOKEN ;
+  rdfs:label "Deciding" ;
+.
+p3.02:VPE_Designing
+  a p3.02:ViewpointPurposeEnum ;
+  dtype:order "0"^^xsd:nonNegativeInteger ;
+  dtype:value "Designing"^^xsd:NMTOKEN ;
+  rdfs:label "Designing" ;
+.
+p3.02:VPE_Informing
+  a p3.02:ViewpointPurposeEnum ;
+  dtype:order "2"^^xsd:nonNegativeInteger ;
+  dtype:value "Informing"^^xsd:NMTOKEN ;
+  rdfs:label "Informing" ;
+.
+p3.02:Value
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/Value" ;
+  rdfs:label "Value" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+p3.02:ViewConceptRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewConceptRefAttributeGroup" ;
+  rdfs:label "View concept ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:viewConceptRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewConceptRefValue ;
+    ] ;
+.
+p3.02:ViewConceptRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewConceptRefGroup" ;
+  rdfs:label "View concept ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:viewConceptRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewConceptRefRef ;
+    ] ;
+.
+p3.02:ViewConceptType
+  a owl:Class ;
+  dc:description "This is an abstract super-type of Node and Connection." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewConceptType" ;
+  rdfs:label "View concept type" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:IdentifierGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "the \"viewRef\" of an \"Concept\" is to a view that allows drill-down diagrams." ;
+      sxml:isAttribute false ;
+      sxml:order "1"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:viewRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:StyleType ;
+      owl:onProperty p3.02:styleRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:styleRef ;
+    ] ;
+.
+p3.02:ViewNodeType
+  a owl:Class ;
+  dc:description "Graphical node type. It can contain child node types." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewNodeType" ;
+  rdfs:label "View node type" ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf p3.02:LabelGroup ;
+  rdfs:subClassOf p3.02:LocationGroup ;
+  rdfs:subClassOf p3.02:SizeGroup ;
+  rdfs:subClassOf p3.02:ViewConceptType ;
+.
+p3.02:ViewRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewRefAttributeGroup" ;
+  rdfs:label "View ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:viewRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewRefValue ;
+    ] ;
+.
+p3.02:ViewRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewRefGroup" ;
+  rdfs:label "View ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:viewRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewRefRef ;
+    ] ;
+.
+p3.02:ViewType
+  a owl:Class ;
+  dc:description """Container for View type.
+
+                Note that View itself is abstract so one must have a derived type. the xml example must look like
+                a tag name \"view\" with an attribute of xsi:type=\"Diagram\", if Diagram is a derived type from ViewType.""" ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewType" ;
+  rdfs:label "View type" ;
+  rdfs:subClassOf p3.02:NamedReferenceableType ;
+  rdfs:subClassOf p3.02:PropertiesGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom p3.02:ViewpointTypeTypeDatatype ;
+      owl:onProperty p3.02:viewpoint ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:viewpointRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewpoint ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewpointRefValue ;
+    ] ;
+.
+p3.02:ViewpointContentEnum
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewpointContentEnum" ;
+  rdfs:label "Viewpoint content enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:VCE_Coherence
+      p3.02:VCE_Details
+      p3.02:VCE_Overview
+    ) ;
+.
+p3.02:ViewpointContentTypeDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Viewpoint content type datatype" ;
+  rdfs:subClassOf xsd:anySimpleType ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:anySimpleType ;
+    ] ;
+.
+p3.02:ViewpointPurposeEnum
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewpointPurposeEnum" ;
+  rdfs:label "Viewpoint purpose enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:NMTOKEN ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:VPE_Deciding
+      p3.02:VPE_Designing
+      p3.02:VPE_Informing
+    ) ;
+.
+p3.02:ViewpointPurposeTypeDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Viewpoint purpose type datatype" ;
+  rdfs:subClassOf xsd:anySimpleType ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:anySimpleType ;
+    ] ;
+.
+p3.02:ViewpointRefAttributeGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewpointRefAttributeGroup" ;
+  rdfs:label "Viewpoint ref attribute group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute true ;
+      owl:allValuesFrom xsd:IDREF ;
+      owl:onProperty p3.02:viewpointRefValue ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewpointRefValue ;
+    ] ;
+.
+p3.02:ViewpointRefGroup
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewpointRefGroup" ;
+  rdfs:label "Viewpoint ref group" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ReferenceType ;
+      owl:onProperty p3.02:viewpointRefRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewpointRefRef ;
+    ] ;
+.
+p3.02:ViewpointType
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewpointType" ;
+  rdfs:label "Viewpoint type" ;
+  rdfs:subClassOf p3.02:NamedReferenceableType ;
+  rdfs:subClassOf p3.02:PropertiesGroup ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ConcernType ;
+      owl:onProperty p3.02:concernRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "1"^^xsd:int ;
+      owl:allValuesFrom p3.02:ViewpointPurposeTypeDatatype ;
+      owl:onProperty p3.02:viewpointPurpose ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "2"^^xsd:int ;
+      owl:allValuesFrom p3.02:ViewpointContentTypeDatatype ;
+      owl:onProperty p3.02:viewpointContent ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "3"^^xsd:int ;
+      owl:allValuesFrom p3.02:AllowedElementTypeType ;
+      owl:onProperty p3.02:allowedElementTypeRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "4"^^xsd:int ;
+      owl:allValuesFrom p3.02:AllowedRelationshipTypeType ;
+      owl:onProperty p3.02:allowedRelationshipTypeRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "5"^^xsd:int ;
+      owl:allValuesFrom p3.02:ModelingNoteType ;
+      owl:onProperty p3.02:modelingNoteRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewpointContent ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewpointPurpose ;
+    ] ;
+.
+p3.02:ViewpointTypeTypeDatatype
+  a rdfs:Datatype ;
+  rdfs:label "Viewpoint type type datatype" ;
+  rdfs:subClassOf xsd:anySimpleType ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:anySimpleType ;
+    ] ;
+.
+p3.02:ViewpointsEnum
+  a owl:Class ;
+  dc:description "Enumeration of Viewpoint types (informative)." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewpointsEnum" ;
+  rdfs:label "Viewpoints enum" ;
+  rdfs:subClassOf p3.02:EnumeratedValue ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      owl:allValuesFrom xsd:token ;
+      owl:onProperty dtype:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty dtype:value ;
+    ] ;
+  owl:oneOf (
+      p3.02:VE_ApplicationCooperation
+      p3.02:VE_ApplicationPlatform
+      p3.02:VE_ApplicationUsage
+      p3.02:VE_BusinessProcessCooperation
+      p3.02:VE_CapabilityMap
+      p3.02:VE_GoalContribution
+      p3.02:VE_GoalRealization
+      p3.02:VE_ImplementationandDeployment
+      p3.02:VE_ImplementationandMigration
+      p3.02:VE_InformationStructure
+      p3.02:VE_Layered
+      p3.02:VE_Migration
+      p3.02:VE_Motivation
+      p3.02:VE_Organization
+      p3.02:VE_OutcomeRealization
+      p3.02:VE_Physical
+      p3.02:VE_Principles
+      p3.02:VE_Product
+      p3.02:VE_Project
+      p3.02:VE_RequirementsRealization
+      p3.02:VE_ResourceMap
+      p3.02:VE_ServiceRealization
+      p3.02:VE_Stakeholder
+      p3.02:VE_Strategy
+      p3.02:VE_Technology
+      p3.02:VE_TechnologyUsage
+    ) ;
+.
+p3.02:ViewpointsType
+  a owl:Class ;
+  dc:description "This is a container for all of the Viewpoints in the model." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewpointsType" ;
+  rdfs:label "Viewpoints type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ViewpointType ;
+      owl:onProperty p3.02:viewpointRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewpointRef ;
+    ] ;
+.
+p3.02:ViewsType
+  a owl:Class ;
+  dc:description "This is a container for all of the Views in the model." ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/ViewsType" ;
+  rdfs:label "Views type" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      dc:description "viewpoints is optional and is a container for any viewpoints." ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:ViewpointsType ;
+      owl:onProperty p3.02:viewpointsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      sxml:isAttribute false ;
+      sxml:order "0"^^xsd:int ;
+      owl:allValuesFrom p3.02:DiagramsType ;
+      owl:onProperty p3.02:diagramsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:diagramsRef ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty p3.02:viewpointsRef ;
+    ] ;
+.
+p3.02:WorkPackage
+  a owl:Class ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/WorkPackage" ;
+  rdfs:label "Work package" ;
+  rdfs:subClassOf p3.02:ConceptGroup ;
+  rdfs:subClassOf p3.02:DocumentationGroup ;
+  rdfs:subClassOf <http://www.opengroup.org/xsd/archimate/3.0/Grp.any> ;
+  rdfs:subClassOf p3.02:NameGroup ;
+  rdfs:subClassOf p3.02:RealElementType ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/XPATH_2.0_ExpressionDatatype>
+  a rdfs:Datatype ;
+  dc:description "An XPath 2.0 expression." ;
+  rdfs:label "2.0 Expression datatype" ;
+  rdfs:subClassOf xsd:token ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:token ;
+      owl:withRestrictions (
+          [
+            xsd:pattern ".+" ;
+          ]
+        ) ;
+    ] ;
+.
+p3.02:a
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/a" ;
+  rdfs:label "a" ;
+.
+p3.02:accessType
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/accessType" ;
+  rdfs:label "access type" ;
+.
+p3.02:allowedElementTypeRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/allowedElementType" ;
+  rdfs:label "allowed element type ref" ;
+.
+p3.02:allowedRelationshipTypeRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/allowedRelationshipType" ;
+  rdfs:label "allowed relationship type ref" ;
+.
+p3.02:b
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/b" ;
+  rdfs:label "b" ;
+.
+p3.02:bendpointRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/bendpoint" ;
+  rdfs:label "bendpoint ref" ;
+.
+p3.02:colorRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/color" ;
+  rdfs:label "color ref" ;
+.
+p3.02:conceptRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/conceptRef" ;
+  rdfs:label "concept ref ref" ;
+.
+p3.02:conceptRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/ConceptRef" ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/conceptRef" ;
+  rdfs:label "concept ref value" ;
+.
+p3.02:concernRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/concern" ;
+  rdfs:label "concern ref" ;
+.
+p3.02:connectionRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/connection" ;
+  rdfs:label "connection ref" ;
+.
+p3.02:connectionRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/connectionRef" ;
+  rdfs:label "connection ref ref" ;
+.
+p3.02:connectionRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/connectionRef" ;
+  rdfs:label "connection ref value" ;
+.
+p3.02:diagramsRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/diagrams" ;
+  rdfs:label "diagrams ref" ;
+.
+p3.02:documentationRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/documentation" ;
+  rdfs:label "documentation ref" ;
+.
+p3.02:elementRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/element" ;
+  rdfs:label "element ref" ;
+.
+p3.02:elementRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/elementRef" ;
+  rdfs:label "element ref ref" ;
+.
+p3.02:elementRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/elementRef" ;
+  rdfs:label "element ref value" ;
+.
+p3.02:elementsRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/elements" ;
+  rdfs:label "elements ref" ;
+.
+p3.02:fillColorRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/fillColor" ;
+  rdfs:label "fill color ref" ;
+.
+p3.02:fontRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/font" ;
+  rdfs:label "font ref" ;
+.
+p3.02:g
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/g" ;
+  rdfs:label "g" ;
+.
+p3.02:h
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/h" ;
+  rdfs:label "h" ;
+.
+p3.02:identifier
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/identifier" ;
+  rdfs:label "identifier" ;
+.
+p3.02:identifierRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/identifierRef" ;
+  rdfs:label "identifier ref value" ;
+.
+p3.02:itemRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/item" ;
+  rdfs:label "item ref" ;
+.
+p3.02:labelRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/label" ;
+  rdfs:label "label ref" ;
+.
+p3.02:lang
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/lang" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.iana.org/assignments/language-subtag-registry" ;
+  <http://www.w3.org/1999/xhtml#a> "http://www.rfc-editor.org/rfc/bcp/bcp47.txt" ;
+  <http://www.w3.org/1999/xhtml#h3> "lang (as an attribute name)" ;
+  <http://www.w3.org/1999/xhtml#h4> "Notes" ;
+  <http://www.w3.org/1999/xhtml#p> """Attempting to install the relevant ISO 2- and 3-letter
+      codes as the enumerated possible values is probably never
+      going to be a realistic possibility.""" ;
+  <http://www.w3.org/1999/xhtml#p> """The union allows for the 'un-declaration' of xml:lang with
+      the empty string.""" ;
+  <http://www.w3.org/1999/xhtml#p> """denotes an attribute whose value
+       is a language code for the natural language of the content of
+       any element; its value is inherited.  This name is reserved
+       by virtue of its definition in the XML specification.""" ;
+  <http://www.w3.org/1999/xhtml#p> "for further information." ;
+  rdfs:label "lang" ;
+.
+p3.02:lineColorRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/lineColor" ;
+  rdfs:label "line color ref" ;
+.
+p3.02:lineWidth
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/lineWidth" ;
+  rdfs:label "line width" ;
+.
+p3.02:metadataRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/metadata" ;
+  rdfs:label "metadata ref" ;
+.
+p3.02:modelingNoteRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/modelingNote" ;
+  rdfs:label "modeling note ref" ;
+.
+p3.02:modifier
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/modifier" ;
+  rdfs:label "modifier" ;
+.
+p3.02:name
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/name" ;
+  rdfs:label "name" ;
+.
+p3.02:nameRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/name" ;
+  rdfs:label "name ref" ;
+.
+p3.02:nodeRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/node" ;
+  rdfs:label "node ref" ;
+.
+p3.02:nodeRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/nodeRef" ;
+  rdfs:label "node ref ref" ;
+.
+p3.02:nodeRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/nodeRef" ;
+  rdfs:label "node ref value" ;
+.
+p3.02:organizationsRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/organizations" ;
+  rdfs:label "organizations ref" ;
+.
+p3.02:propertiesRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/properties" ;
+  rdfs:label "properties ref" ;
+.
+p3.02:propertyDefinitionRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/propertyDefinition" ;
+  rdfs:label "property definition ref" ;
+.
+p3.02:propertyDefinitionRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/propertyDefinitionRef" ;
+  rdfs:label "property definition ref ref" ;
+.
+p3.02:propertyDefinitionRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/propertyDefinitionRef" ;
+  rdfs:label "property definition ref value" ;
+.
+p3.02:propertyDefinitionsRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/propertyDefinitions" ;
+  rdfs:label "property definitions ref" ;
+.
+p3.02:propertyRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/property" ;
+  rdfs:label "property ref" ;
+.
+p3.02:r
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/r" ;
+  rdfs:label "r" ;
+.
+p3.02:ref
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/ref" ;
+  rdfs:label "ref" ;
+.
+p3.02:relationshipRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/relationship" ;
+  rdfs:label "relationship ref" ;
+.
+p3.02:relationshipRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/relationshipRef" ;
+  rdfs:label "relationship ref ref" ;
+.
+p3.02:relationshipRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/relationshipRef" ;
+  rdfs:label "relationship ref value" ;
+.
+p3.02:relationshipsRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/relationships" ;
+  rdfs:label "relationships ref" ;
+.
+p3.02:schema
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/schema" ;
+  rdfs:label "schema" ;
+.
+p3.02:schemaInfoRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/schemaInfo" ;
+  rdfs:label "schema info ref" ;
+.
+p3.02:schemaversion
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/schemaversion" ;
+  rdfs:label "schemaversion" ;
+.
+p3.02:size
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/size" ;
+  rdfs:label "size" ;
+.
+p3.02:source
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/source" ;
+  rdfs:label "source" ;
+.
+p3.02:sourceAttachmentRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/sourceAttachment" ;
+  rdfs:label "source attachment ref" ;
+.
+p3.02:stakeholderRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/stakeholder" ;
+  rdfs:label "stakeholder ref" ;
+.
+p3.02:stakeholdersRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/stakeholders" ;
+  rdfs:label "stakeholders ref" ;
+.
+p3.02:stereotypeRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/stereotypeRef" ;
+  rdfs:label "stereotype ref ref" ;
+.
+p3.02:stereotypeRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/stereotypeRef" ;
+  rdfs:label "stereotype ref value" ;
+.
+p3.02:style
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/style" ;
+  rdfs:label "style" ;
+.
+p3.02:styleRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/style" ;
+  rdfs:label "style ref" ;
+.
+p3.02:target
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/target" ;
+  rdfs:label "target" ;
+.
+p3.02:targetAttachmentRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/targetAttachment" ;
+  rdfs:label "target attachment ref" ;
+.
+p3.02:type
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/type" ;
+  rdfs:label "type" ;
+.
+p3.02:valueRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/value" ;
+  rdfs:label "value ref" ;
+.
+p3.02:version
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/version" ;
+  rdfs:label "version" ;
+.
+p3.02:viewConceptRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/viewConceptRef" ;
+  rdfs:label "view concept ref ref" ;
+.
+p3.02:viewConceptRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/viewConceptRef" ;
+  rdfs:label "view concept ref value" ;
+.
+p3.02:viewRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/view" ;
+  rdfs:label "view ref" ;
+.
+p3.02:viewRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/viewRef" ;
+  rdfs:label "view ref ref" ;
+.
+p3.02:viewRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/viewRef" ;
+  rdfs:label "view ref value" ;
+.
+p3.02:viewpoint
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/viewpoint" ;
+  rdfs:label "viewpoint" ;
+.
+p3.02:viewpointContent
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/viewpointContent" ;
+  rdfs:label "viewpoint content" ;
+.
+p3.02:viewpointPurpose
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/viewpointPurpose" ;
+  rdfs:label "viewpoint purpose" ;
+.
+p3.02:viewpointRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/viewpoint" ;
+  rdfs:label "viewpoint ref" ;
+.
+p3.02:viewpointRefRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/viewpointRef" ;
+  rdfs:label "viewpoint ref ref" ;
+.
+p3.02:viewpointRefValue
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/viewpointRef" ;
+  rdfs:label "viewpoint ref value" ;
+.
+p3.02:viewpointsRef
+  a owl:ObjectProperty ;
+  sxml:tag "http://www.opengroup.org/xsd/archimate/3.0/viewpoints" ;
+  rdfs:label "viewpoints ref" ;
+.
+p3.02:w
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/w" ;
+  rdfs:label "w" ;
+.
+p3.02:x
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/x" ;
+  rdfs:label "x" ;
+.
+p3.02:xpathPart
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/xpathPart" ;
+  rdfs:label "xpath part" ;
+.
+p3.02:y
+  a owl:DatatypeProperty ;
+  sxml:attribute "http://www.opengroup.org/xsd/archimate/3.0/y" ;
+  rdfs:label "y" ;
+.
+<http://www.w3.org/1999/xhtml#a>
+  a owl:AnnotationProperty ;
+  rdfs:label "a" ;
+.
+<http://www.w3.org/1999/xhtml#h3>
+  a owl:AnnotationProperty ;
+  rdfs:label "h3" ;
+.
+<http://www.w3.org/1999/xhtml#h4>
+  a owl:AnnotationProperty ;
+  rdfs:label "h4" ;
+.
+<http://www.w3.org/1999/xhtml#p>
+  a owl:AnnotationProperty ;
+  rdfs:label "p" ;
+.
+skos:prefLabel
+  a owl:AnnotationProperty ;
+  rdfs:label "pref label" ;
+.

@@ -1,0 +1,471 @@
+# baseURI: http://definities.politie.nl/iv
+# imports: http://purl.org/dc/terms/
+# imports: http://topbraid.org/imported
+# imports: http://topbraid.org/skos.shapes
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix metadata: <http://topbraid.org/metadata#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix begrippenstelsel: <http://definities.politie.nl/id/begrippenstelsel/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix apw_begrip: <http://definities.politie.nl/id/begrip/> .
+@prefix iso-thes: <http://purl.org/iso25964/skos-thes#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix im_begrip: <http://definities.politie.nl/im/id/begrip/> .
+@prefix status: <http://ontologie.politie.nl/def/status#> .
+im_begrip:DossierIdentificatie
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Identificerende gegevens van een dossier"@nl ;
+        skos:example       "gms-identificatie"^^rdf:HTML ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Dossier identificatie"@nl ;
+        skos:scopeNote     "Alle identificatie nummers uit verschillende systemen"^^rdf:HTML ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:GoedBeheerDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014." ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "Een goed beheer dossier is een beheerdossier voor goederen."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Goed beheer dossier"@nl ;
+        skos:scopeNote           "De politie neemt goederen in beheer in het kader van executie (voertuigen), maar neemt ook goederen in beslag. Dit kan op verschillende gronden, o.a. om waarde veilig te stellen, maar ook ten behoeve van waarheidsvinding, bijvoorbeeld als (mogelijke) spoordrager. Sporen kunnen op zichzelf ook weer een goed zijn, bijvoorbeeld een gipsafdruk van een bandenspoor. In het dossier wordt het hele beheerproces vastgelegd, zodat altijd bekend is waar het goed is, en wat er mee gebeurd is."^^rdf:HTML .
+
+im_begrip:DienstverbandDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014.\n" ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:altLabel            "Gebruikersdossier"@nl , "Medewerkersdossier"@nl ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "Een dienstverbanddossier is een dossier bedoeld voor alle gegevens die hangen aan een dienstverband."@nl ;
+        skos:editorialNote       "Een alternatieve naam is gebruikersdossier of medewerker-dossier. De term dienstverband geeft echter het duidelijkst aan welke entiteit kenmerkend is voor dit type dossier."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Dienstverband dossier"@nl ;
+        skos:scopeNote           "Het dossier bevat persoonsgegevens, lidmaatschap e.d., inclusief eigen notities c.q. bewaarde ongebonden gegevens. Deze laatste categorie gegevens moet binnen redelijke tijd (een paar dagen, bijv. 72 uur) binnen dossiers gebruikt worden. Ze worden na die tijd geschoond omdat het dienstverbanddossier geen goede WPG-context kan bieden. Denk hierbij aan bevraagde personen, voertuigen, gemaakte foto's. Deze worden tijdelijk bewaard zodat ze later kunnen worden toegevoegd in het juiste dossier (bijv. een signaal- of opvolgingsdossier)."@nl .
+
+im_begrip:LocatieRelatie
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een locatierelatie geeft een gespecificeerde relatie tussen 2 locaties."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Locatie relatie"@nl ;
+        skos:relatedMatch  apw_begrip:Locatie ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:Dossier  a       skos:Concept ;
+        status:status      status:InBewerking ;
+        dcterms:source     "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014." ;
+        skos:altLabel      "Zaak"@nl , "Mapje"@nl ;
+        skos:definition    "Een dossier is een samenhangend geheel van gegevens en gedrag betrekking hebbende op één onderwerp ten behoeve van regie, uitvoering of overzicht."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Dossier"@nl ;
+        skos:related       im_begrip:DossierStatusSoort , im_begrip:Relatie ;
+        skos:scopeNote     "Een dossier is de drager van de WPG-grondslag, en alle verdere relevante gegevens die nodig zijn om de WPG na te leven. Dus ieder tot een persoon herleidbaar gegeven moet in een dossier zitten. En aangezien de meeste politie-gegevens tot een persoon herleidbaar zijn is het gevolg:  Ieder politiegegeven moet in een dossier moet zitten. Naast toegang en bewaarregime volgens de WPG is het dossier ook de drager van RACI (responsible, accountable, consulted, informed). Deze spelen ook een rol bij autorisatie (nog te besluiten: RACI of politie-specifieke rollen). Deze kunnen worden ingevuld door een organisatorische eenheid (OE) of het OE-lidmaatschap van een medewerker."@nl ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:SchermWeergave
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "..."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Scherm weergave"@nl ;
+        skos:relatedMatch  apw_begrip:Locatie ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:Hoedanigheid
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een hoedanigheid is een rol die kan worden toegekent aan een partij of locatie."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Hoedanigheid"@nl ;
+        skos:scopeNote     "Hoedanigheden zijn in de ontologie subklassen van rdf:statement. Een rdf:statement verteld meer informatie over een triple, de triple zou je kunnen zien als een uitspraak (bijvoorbeeld a beinvloed b) de statement kan dan extra informatie tonen (zoals:zekerheid van deze uitspraak is 70%)"^^rdf:HTML ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:Afgeleide  a     skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:altLabel      "Nakomeling"@nl ;
+        skos:definition    "Afgeleide is de relatie die een nieuwe Bestandsbeschrijving verbindt met de voorgaande Bestandsbeschrijving"@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Afgeleide"@nl ;
+        skos:related       im_begrip:Bestandsbeschrijving ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:DossierNotificatie
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een dossier notificatie is een vermelding van een belangrijke wijziging in het dossier."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Dossier notificatie"@nl ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:GebeurtenisStatus
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Gebeurtenis status"@nl ;
+        skos:related       im_begrip:Gebeurtenis ;
+        skos:relatedMatch  apw_begrip:Status ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:Verhoor  a        skos:Concept ;
+        status:status       status:InBewerking ;
+        dcterms:source      <https://nl.wikipedia.org/wiki/Verhoor_(ondervraging)> ;
+        skos:definition     "Een verhoor is een activiteit waarbij een betrokkene bij een incident bevraagd wordt en/of een verklaring aflegt."@nl ;
+        skos:editorialNote  "Dit is een abstracte/technische definitie aangezien verhoor niet als generiek begrip wordt gehanteerd door blauw. Daarom is er ook geen politiebron voor te vinden."@nl ;
+        skos:inScheme       begrippenstelsel:InformatieManagement ;
+        skos:prefLabel      "Verhoor"@nl ;
+        skos:topConceptOf   begrippenstelsel:InformatieManagement .
+
+im_begrip:WeergaveNaam
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    ".."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Weergave naam"@nl ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:OpvolgingsDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014." ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "Een opvolgingsdossier is een dossier bedoeld voor de regie op, weergave van, het opvolgen van signalen."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Opvolgingsdossier"@nl ;
+        skos:related             im_begrip:SignaalDossier ;
+        skos:relatedMatch        apw_begrip:Signaal ;
+        skos:scopeNote           "Signalen (bijvoorbeeld in de vorm van meldingen of aangiften) leiden tot opvolgingen (bijvoorbeeld in de vorm van een opvolging Incident of een opsporingsonderzoek). Meerdere signalen kunnen daarbij tot één enkele opvolging leiden maar één signaal kan ook tot meerdere opvolgingen leiden. Ook ter plaatse gaan ten gevolge van een melding is in principe al opvolging. Terwijl de opvolging al loopt kunnen er ook nog nieuwe signalen aan toegevoegd (gekoppeld) worden.\r\n\r\nDe bedoeling is dat in het opvolgingsdossier aan waarheidsvinding gedaan wordt, en het perspectief bevat wat we als politie ‘geloven’. Dit kan gedurende de tijd steeds bijgesteld worden.\r\n\r\nAan het opvolgingsdossier worden signaal-dossiers gekoppeld die betrekking hebben op de gebeurtenissen die in die opvolging opgenomen zijn. Deze krijgen (naar keuze?) de WPG en autorisatie-context van de opvolging.\r\n\r\n(wat als een signaal tot meerdere opvolgingen leidt? meerdere WPG-contexten? nog over nadenken/besluiten i.c.m. techniek)\r\n\r\nOpvolgingsdossiers zouden genest moeten kunnen worden. Zeker binnen opsporing komen ook deelonderzoeken e.d. voor. Dit zal t.z.t. verder uitgewerkt moeten worden.\r\n\r\nActiviteiten die in de opvolging gebeuren zullen leiden tot Activiteitdossiers. Deze zullen als sub-dossier aan het opvolgingsdossier gekoppeld zijn.\r\n\r\nIn tegenstelling tot de signaaldossiers waar vanuit het melder-perspectief de gegevens weergegeven worden (wat heeft wie gezegd), wordt in het opvolgingsdossier het politie-perspectief weergegeven. Wat geloven we als politie wat er gebeurd is. Dit kan uiteraard gedurende het onderzoek steeds bijgesteld worden.\r\n\r\nn opvolging hoeft niet beperkt te zijn tot bijv. één incident of één verdachte. Bijvoorbeeld een melding m.b.t. winkeldiefstal met twee verdachten kan gewoon in één opvolgingsdossier opgevolgd worden. En als blijkt dat er uit verschillende winkels goederen ontvreemd zijn dan levert dat meerdere incidenten op. Deze kunnen naar keuze apart of gezamelijk opgevolgd worden. \r\n\r\nBinnen opvolging zal er ook een screeningsproces komen zodat er sturing is aan welke opvolgingen er wel of geen tijd/prioriteit gegeven wordt. Bijv. een eenvoudige diefstal zonder relevante aanknopingspunten tbv opsporing zal vaak weinig vervolg aan gegeven worden."^^rdf:HTML .
+
+im_begrip:Gebeurtenis
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:altLabel      "Voorval"@nl ;
+        skos:definition    "Een gebeurtenis is een situatie, handeling of gedraging."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Gebeurtenis"@nl ;
+        skos:related       im_begrip:GebeurtenisIdentificatie , im_begrip:PartijHoedanigheid , im_begrip:GebeurtenisLocatieRelatie , im_begrip:GebeurtenisStatus , im_begrip:GebeurtenisStatusSoort ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:GebeurtenisIdentificatie
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "..."^^rdf:HTML ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Gebeurtenis identificatie"@nl ;
+        skos:related       im_begrip:Gebeurtenis ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:Bestandsbeschrijving
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een bestandsbeschrijving is een verzameling van alle informatie behorend bij een Bestand."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Bestandsbeschrijving"@nl ;
+        skos:related       im_begrip:BijlageBij , im_begrip:Afgeleide ;
+        skos:relatedMatch  apw_begrip:Bestand ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:OrigineelBestand
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:altLabel      "Authentiek bestand"@nl ;
+        skos:broadMatch    apw_begrip:Bestand ;
+        skos:definition    "Een Origineel bestand is een bestand zoals het is aangeleverd, zonder dat daar bewerkingen over zijn gedaan."^^rdf:HTML ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Origineel bestand"@nl ;
+        skos:relatedMatch  apw_begrip:Bestand , apw_begrip:MultimediabestandAuthentiek , apw_begrip:Bewerking ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:MultimediaBestandsbeschrijving
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        iso-thes:broaderGeneric  im_begrip:Bestandsbeschrijving ;
+        skos:broader             im_begrip:Bestandsbeschrijving ;
+        skos:definition          "Een multimedia bestandsbeschrijving is een Bestandsbeschrijving over een Multimediabestand"@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Multimedia bestandsbeschrijving"@nl ;
+        skos:relatedMatch        apw_begrip:Multimediabestand , apw_begrip:Bestand .
+
+im_begrip:Dossiermodel
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Het dossiermodel is een architectuurvoorschrift voor het ordenen (bijeenhouden) van bij Politie geregistreerde gegevens."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Dossiermodel"@nl ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:AssociatiePartijFeit
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        iso-thes:broaderGeneric  im_begrip:Relatie ;
+        skos:altLabel            "Betrokkenheid"@nl ;
+        skos:broader             im_begrip:Dossier , im_begrip:Relatie ;
+        skos:definition          "Een associatie partij-feit betreft de rol van een (rechts)persoon bij een incident."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Associatie partij-feit"@nl ;
+        skos:related             im_begrip:PartijHoedanigheid ;
+        skos:relatedMatch        apw_begrip:Partij , apw_begrip:Incident .
+
+im_begrip:DossierStatus
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een fase in de levenscyclus van een dossier."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Dossier status"@nl ;
+        skos:relatedMatch  apw_begrip:Status ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:MultimediaMetadata
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Multimedia metadata zijn de bij het Digitaal Bestaand meegeleverde Metagegevens. {@nl}"^^rdf:HTML ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Multimedia metadata"@nl ;
+        skos:relatedMatch  apw_begrip:Metagegevens , apw_begrip:Multimediabestand ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:GebeurtenisLocatieRelatie
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een gebeurtenislocatierelatie is een gespecificeerde relatie tussen een gebeurtenis en een locatie"@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Gebeurtenis locatie relatie"@nl ;
+        skos:related       im_begrip:Gebeurtenis ;
+        skos:relatedMatch  apw_begrip:Locatie ;
+        skos:scopeNote     "Het is soms nodig om een gespecificeerde relatie te leggen tussen een gebeurtenis en een locatie, zo kan een locatie bijvoorbeeld de plek zijn waar de gebeurtenis heeft plaatsgevonden maar ook een andere relatie hebben naar die gebeurtenis bijvoorbeeld ......"^^rdf:HTML ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+begrippenstelsel:InformatieManagement
+        a                   skos:ConceptScheme ;
+        skos:hasTopConcept  im_begrip:Afgeleide , im_begrip:LocatieServerId , im_begrip:SignaalOpgenomenDoor , im_begrip:Dossiermodel , im_begrip:BijlageBij , im_begrip:GebeurtenisLocatieRelatie , im_begrip:DossierStatus , im_begrip:DossierStatusSoort , im_begrip:Verhoor , im_begrip:Bestandsbeschrijving , im_begrip:DossierTitel , im_begrip:Relatie , im_begrip:DossierIdentificatie , im_begrip:WaarGemeld , im_begrip:SameAs , im_begrip:GebeurtenisIdentificatie , im_begrip:Kernobject , im_begrip:Hoedanigheid , im_begrip:WeergaveNaam , im_begrip:OrigineelBestand , im_begrip:MultimediaMetadata , im_begrip:SchermWeergave , im_begrip:Lidmaatschap , im_begrip:GebeurtenisStatusSoort , im_begrip:GebeurtenisStatus , im_begrip:Dossier , im_begrip:DossierNotificatie , im_begrip:Gebeurtenis , im_begrip:LocatieRelatie ;
+        skos:prefLabel      "Begrippenstelsel Informatie Management"@nl .
+
+im_begrip:DossierTitel
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "De naam van het dossier"@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Dossier titel"@nl ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:Relatie  a        skos:Concept ;
+        status:status       status:InBewerking ;
+        skos:altLabel       "Associatie"@nl ;
+        skos:definition     "Een relatie is enig verband tussen de kernbegrippen van het politiewerk (Partij, Extern feit, Locatie, Goed, MO, Resource, Aanpak, Dossier, Product)."@nl ;
+        skos:editorialNote  "To do: gerelateerd-relaties leggen naar Extern feit, Goed, Resource, Aanpak en Product zodra deze gedefinieerd zijn."@nl ;
+        skos:inScheme       begrippenstelsel:InformatieManagement ;
+        skos:prefLabel      "Relatie"@nl ;
+        skos:related        im_begrip:Dossier ;
+        skos:relatedMatch   apw_begrip:Partij , apw_begrip:Locatie , apw_begrip:ModusOperandi ;
+        skos:topConceptOf   begrippenstelsel:InformatieManagement .
+
+im_begrip:Kernobject  a    skos:Concept ;
+        rdfs:comment       "Een kernobject is een gegevensobject van het type NatuurlijkPersoon, NietNatuurlijkPersoon, Voertuig of Locatie" ;
+        rdfs:label         "Kernobject"@nl ;
+        status:status      status:InBewerking ;
+        dcterms:source     "Stelsel van Gegevensobjecten" ;
+        dcterms:source     <https://confluence.ontwikkel.local/display/IMDAT/Basisobject> ;
+        skos:altLabel      "Basisobject"@nl ;
+        skos:definition    "Een kernobject is een bedrijfsobject voor het politieproces. Een kernobject is het ankerpunt voor vastlegging van de transacties van de politie."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Kernobject" ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:PersoonBeheerDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014." ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "Een persoonbeheerdossier is een beheerdossier speciaal voor het beheer van de gegvens van een natuurlijk persoon."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Persoon beheer dossier"@nl ;
+        skos:scopeNote           "Dit zal in de praktijk met name gaan over arrestanten-beheer. Hier onder vallen naast in en uitboeken ook activiteiten zoals fouilleren, inschakelen arts, regelen vervoer, verzorgende handelingen zoals eten geven, luchten e.d."^^rdf:HTML .
+
+im_begrip:PartijHoedanigheid
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        iso-thes:broaderGeneric  im_begrip:Hoedanigheid ;
+        skos:broader             im_begrip:Hoedanigheid ;
+        skos:definition          "Een partijhoedanigheid betreft de rol van een partij ((rechts)persoon) bij een gebeurtenis (incident of activiteit)."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Partij hoedanigheid"@nl ;
+        skos:related             im_begrip:Gebeurtenis , im_begrip:AssociatiePartijFeit ;
+        skos:relatedMatch        apw_begrip:Partij .
+
+im_begrip:DossierAangemaaktDoor
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Aangemaakt door verwijst naar het lidmaatschap dat het dossier heeft aangemaakt."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Dossier aangemaakt door"@nl ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:LocatieServerId
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "..."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Locatie server id"@nl ;
+        skos:relatedMatch  apw_begrip:Locatie ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:MeldkamerSignaalDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        iso-thes:broaderGeneric  im_begrip:SignaalDossier ;
+        skos:broader             im_begrip:SignaalDossier ;
+        skos:definition          "Een signaaldossier waar de gegevens vanuit de meldkamer komen."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Meldkamer signaal dossier "@nl ;
+        skos:relatedMatch        apw_begrip:Meldkamer .
+
+im_begrip:Lidmaatschap
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een lidmaatschap geeft aan welke Medewerker (Dienstverband)  is toegewezen aan welke Organisatorische Eenheid."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Lidmaatschap"@nl ;
+        skos:relatedMatch  apw_begrip:Medewerker , apw_begrip:Dienstverband , apw_begrip:OrganisatorischeEenheid ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:ProductBijlageBij
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        iso-thes:broaderGeneric  im_begrip:BijlageBij ;
+        skos:broader             im_begrip:BijlageBij ;
+        skos:definition          "Een Product Bijlage Bij relatie is een gespecificeerde BijlageBij relatie."^^rdf:HTML ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Product bijlage bij"@nl .
+
+im_begrip:DossierStatusSoort
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:broadMatch    apw_begrip:Soort ;
+        skos:definition    ""@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Dossier status soort "@nl ;
+        skos:related       im_begrip:Dossier ;
+        skos:relatedMatch  apw_begrip:Status ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:BeheerDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014." ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "Een beheerdossier is een dossier bedoeld voor het adequaat beheer van een persoon of fysiek object welke komt onder de verantwoordelijkheid van de politie."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Beheer dossier"@nl ;
+        skos:scopeNote           "Als de politie iets of iemand in beheer neemt moeten daar goed voor gezorgd worden,  evenals een soort track & trace waarmee we ieder moment kunnen verantwoorden wat ermee gebeurd is. De plek om dit vast te leggen is het beheerdossier. We onderkennen twee subtypes: PersoonBeheerDossier en GoedBeheerDossier. Deze klassen zullen normaal gesproken gebruikt worden, Beheerdossier zelf is een abstractie van deze."@nl .
+
+im_begrip:FocusDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014.\n" ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "Een Focus dossier is een dossier die gegevens over dingen in de buitenwereled verzamelt die het politieproces ondersteunen"@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Focus dossier"@nl ;
+        skos:scopeNote           "Focus dossiers verzamelen informatie over dingen (bijv. personen, groepen, gebieden, verschijnselen )in de buitenwereld, waaronder informatie over het geen de politie aan werk uitvoert met betrekking tot deze dingen. Focus Dossiers vormen het centrale overzicht van wat we over een specifieke partij, goed, locatie bekend is.\r\n\r\nFocus dossiers zullen grotendeels of helemaal een query zijn."^^rdf:HTML .
+
+im_begrip:BijlageBij  a    skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een bijlage bij is een relaties tussen twee bestandsbeschrijvingen waarvan degene waarnaar verwezen wordt degene complementeerd waarvandaan verwezen wordt"@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Bijlage bij"@nl ;
+        skos:related       im_begrip:Bestandsbeschrijving ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:SignaalOpgenomenDoor
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        dcterms:source     <https://confluence.ontwikkel.local/x/LgK2Bw> ;
+        skos:definition    "Verwijst naar het lidmaatschap die de het signaal heeft geregisteerd."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Opgenomen door"@nl ;
+        skos:relatedMatch  apw_begrip:Signaal ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:SignaalDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014.\n" ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "Een Signaaldossier is een dossier bedoeld voor het ontvangen van een signaal."@nl ;
+        skos:editorialNote       "Een apart signaaldossier is gewenst om het ontvangen signaal zuiver te houden, zonder interpretatie, eigen inzichten en beoordeling op waarheid. Deze laatst genoemde aspecten komen pas aan bod in de opvolging, waar ook weer een apart type dossier bij hoort."^^rdf:HTML ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Signaal dossier "@nl ;
+        skos:related             im_begrip:OpvolgingsDossier ;
+        skos:relatedMatch        apw_begrip:Signaal ;
+        skos:scopeNote           "Om geen onderscheid te hebben tussen een simpele internetaangifte en potentieel complexere aangiften op het bureau (of andere afgesproken plaats) is er voor gekozen dat iedere vorm van aangifte een signaal is. De activiteiten die ondernomen moeten worden om het signaal duidelijk te krijgen, zoals de activiteit verhoor aangever, horen dus ook nog bij het signaal. Ook doorvragen bij een aangifte-verhoor geeft nog steeds het verhaal van de aangever, vanuit zijn perspectief. Na ondertekening van de aangifte wordt het signaal-dossier gesloten en mag het niet meer gewijzigd worden. Aanvullingen komen in een nieuw signaaldossier.\r\n\r\nElke activiteit die niet nodig is voor het ontvangen van het signaal, creëert een opvolgingsdossier. Denk aan ter plaatse gaan, zelf foto’s maken, eigen waarnemingen doen. Dit creëert allemaal een politieperspectief. Een afspraak maken om de aangifte op te nemen, of dit nou op bureau of bij de persoon thuis is, creëert geen politieperspectief en is nog signaal. Dus voor zover activiteiten gaan over het compleet krijgen / ontvangen van het verhaal van de bron horen deze in een signaaldossier, alle overige activiteiten zijn opvolging (of eventueel beheer).\r\n\r\nEigen waarneming is ook signaal, tenzij er al gehandeld wordt vanuit een opvolging en de waarneming relevant is in het kader van die opvolging. Dit omdat een eigen waarneming eventueel net zo beoordeeld moet worden als een ander signaal. Bijv. tijdens de surveillance wordt een auto gezien op een ongewone plek. Er wordt een signaal van de verdachte situatie gemaakt, die betrokken kan worden bij een opvolging als er later iets strafbaars aan de hand bleek te zijn.\r\n\r\nAls een burger mondeling iets meedeelt aan een diender tijdens surveillance dan is dat geen eigen waarneming, maar wel een signaal. Als we tijdens opvolging (bijvoorbeeld tijdens een buurtonderzoek) een getuige vinden, dan is het geen signaal, maar bijvoorbeeld een getuige-verhoor. Dit is een activiteit binnen het opvolgingsdossier (eigenlijk een in subdossier binnen het opvolgingsdossier).\r\n\r\nOok een klacht van een burger tegen de politie is een signaal\r\n\r\nRestinformatie uit een opvolging (meestal art.9/10 onderzoek) kan ook op een gegeven moment beschikbaar gesteld worden, en levert dan een nieuw signaal, en signaaldossier. Dit soort restinformatie kan vaak in belang van het onderzoek eerder misschien niet opgepakt worden, maar later wel. \r\n\r\nDe informatie in het signaal hoeft niet verplicht omgezet te worden in gestructureerde informatie, dat mag ook in het opvolgingsdossier gebeuren."^^rdf:HTML .
+
+im_begrip:WaarGemeld  a    skos:Concept ;
+        status:status      status:InBewerking ;
+        dcterms:source     <https://confluence.ontwikkel.local/x/LgK2Bw> ;
+        skos:definition    "De locatie waar een signaal is gemeld."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Waar gemeld"@nl ;
+        skos:relatedMatch  apw_begrip:Signaal ;
+        skos:scopeNote     "Een signaal komt ergens tot stand dat kan op de locatie van het politiebureau zijn maar ook op een andere locatie zoals dichtbij de plek waar het incident gebeurd is."^^rdf:HTML ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:OrganisatorischeEenheidDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014." ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "..."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Organisatorische eenheid dossier"@nl ;
+        skos:relatedMatch        apw_begrip:OrganisatorischeEenheid ;
+        skos:scopeNote           "Iedere organisatorische eenheid (OE) krijgt een eigen dossier, waarin gegevens m.b.t. de OE bewaard kunnen worden. Bijvoorbeeld briefing items die niet dossier-gebonden zijn (die dus niet over werk-inhoudelijke zaken gaan!), en werkopdrachten die niet zaak-gebonden zijn (bijv. auto's wassen). Dit mogen dus geen gegevens zijn waarop de WPG van toepassing is!"^^rdf:HTML .
+
+im_begrip:ActiviteitDossier
+        a                        skos:Concept ;
+        status:status            status:InBewerking ;
+        dcterms:source           "Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014." ;
+        iso-thes:broaderGeneric  im_begrip:Dossier ;
+        skos:broader             im_begrip:Dossier ;
+        skos:definition          "Een activiteitdossier is een dossier welke de gegevens bevat over de regie en uitvoering van een activiteit."@nl ;
+        skos:inScheme            begrippenstelsel:InformatieManagement ;
+        skos:prefLabel           "Activiteit dossier"@nl ;
+        skos:scopeNote           "Activiteitdossiers zijn sub-dossiers van andere dossiers, zoals opvolgingsdossier, beheerdossier en signaaldossier. \r\nNota bene: Dit is geen semantische relatie"@nl .
+
+im_begrip:SameAs  a        skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:definition    "Een SameAs relatie verbindt twee individuen met elkaar door ze gelijk te maken."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Same as"@nl ;
+        skos:relatedMatch  apw_begrip:Locatie ;
+        skos:scopeNote     "Voor OPP is het nodig om gebruik te maken van de SameAs relatie maar dan wel gespecificeerd, dus eentje voor locatie en eentje voor persoon etc. Dit om te voorkomen dat de property owl:sameAs overal voor wordt gebruikt en de queries daarna teveel data binnenhalen."^^rdf:HTML ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+im_begrip:GebeurtenisStatusSoort
+        a                  skos:Concept ;
+        status:status      status:InBewerking ;
+        skos:broadMatch    apw_begrip:Soort ;
+        skos:definition    "De logische indeling waarin de gebeutenis status valt."@nl ;
+        skos:inScheme      begrippenstelsel:InformatieManagement ;
+        skos:prefLabel     "Gebeurtenis status soort"@nl ;
+        skos:related       im_begrip:Gebeurtenis ;
+        skos:relatedMatch  apw_begrip:Status ;
+        skos:topConceptOf  begrippenstelsel:InformatieManagement .
+
+<http://definities.politie.nl/iv>
+        a                owl:Ontology ;
+        rdfs:label       "Begrippenkader Informatie Management" ;
+        metadata:status  metadata:UnderDevelopmentStatus ;
+        owl:imports      <http://topbraid.org/imported> , dcterms: , <http://www.w3.org/2004/02/skos/core> , <http://topbraid.org/skos.shapes> ;
+        owl:versionInfo  "Created with TopBraid Composer" .
