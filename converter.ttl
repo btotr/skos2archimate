@@ -3,12 +3,13 @@
 # imports: http://spinrdf.org/spin
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
 # imports: http://www.w3.org/XML/1998/namespace
+# prefix: s2a
 
-@prefix : <http://archimate.politie.nl/skos2archimate#> .
+@prefix archimate: <http://www.opengroup.org/xsd/archimate/3.0/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix p3.0: <http://www.opengroup.org/xsd/archimate/3.0/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix s2a: <http://archimate.politie.nl/skos2archimate#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -17,7 +18,7 @@
   a owl:Ontology ;
   owl:imports <http://definities.politie.nl/iv> ;
   owl:imports <http://spinrdf.org/spin> ;
-  owl:imports p3.0: ;
+  owl:imports archimate: ;
   owl:imports <http://www.w3.org/XML/1998/namespace> ;
 .
 <http://www.w3.org/2004/02/skos/core#Concept>
@@ -25,19 +26,51 @@
       a sp:Construct ;
       sp:templates (
           [
-            sp:object p3.0:Model ;
+            sp:object archimate:Model ;
             sp:predicate rdf:type ;
             sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+          ]
+          [
+            sp:object [
+                sp:varName "businessObject" ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "businessObject" ;
+              ] ;
           ]
           [
             sp:object [
                 sp:varName "name" ;
               ] ;
             sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+            sp:subject [
+                sp:varName "businessObject" ;
+              ] ;
           ]
           [
-            sp:object p3.0:nameRef ;
+            sp:object [
+                sp:varName "definition" ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject [
+                sp:varName "businessObject" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:documentationRef ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "definition" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:nameRef ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "name" ;
@@ -45,7 +78,7 @@
           ]
           [
             sp:object [
-                sp:varName "textNode" ;
+                sp:varName "textNodeName" ;
               ] ;
             sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
             sp:subject [
@@ -56,7 +89,7 @@
             sp:object <http://topbraid.org/sxml#TextNode> ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "textNode" ;
+                sp:varName "textNodeName" ;
               ] ;
           ]
           [
@@ -65,7 +98,32 @@
               ] ;
             sp:predicate <http://topbraid.org/sxml#text> ;
             sp:subject [
-                sp:varName "textNode" ;
+                sp:varName "textNodeName" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "textNodeDefinition" ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject [
+                sp:varName "definition" ;
+              ] ;
+          ]
+          [
+            sp:object <http://topbraid.org/sxml#TextNode> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "textNodeDefinition" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "definitionText" ;
+              ] ;
+            sp:predicate <http://topbraid.org/sxml#text> ;
+            sp:subject [
+                sp:varName "textNodeDefinition" ;
               ] ;
           ]
         ) ;
@@ -92,19 +150,12 @@
               ] ;
           ]
           [
-            a sp:Bind ;
-            sp:expression [
-                a sp:iri ;
-                sp:arg1 [
-                    a sp:concat ;
-                    sp:arg1 "http://archimate.politie.nl/text/" ;
-                    sp:arg2 [
-                        sp:varName "labelSpecialisatie" ;
-                      ] ;
-                  ] ;
+            sp:object [
+                sp:varName "definitionText" ;
               ] ;
-            sp:variable [
-                sp:varName "textNode" ;
+            sp:predicate <http://www.w3.org/2004/02/skos/core#definition> ;
+            sp:subject [
+                sp:varName "specialisatie" ;
               ] ;
           ]
           [
@@ -113,7 +164,39 @@
                 a sp:iri ;
                 sp:arg1 [
                     a sp:concat ;
-                    sp:arg1 "http://archimate.politie.nl/element/" ;
+                    sp:arg1 "http://archimate.politie.nl/naam-text/" ;
+                    sp:arg2 [
+                        sp:varName "labelSpecialisatie" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "textNodeName" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://archimate.politie.nl/definitie-text/" ;
+                    sp:arg2 [
+                        sp:varName "labelSpecialisatie" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "textNodeDefinition" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://archimate.politie.nl/naam-element/" ;
                     sp:arg2 [
                         sp:varName "labelSpecialisatie" ;
                       ] ;
@@ -121,6 +204,22 @@
               ] ;
             sp:variable [
                 sp:varName "name" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://archimate.politie.nl/businessObject/" ;
+                    sp:arg2 [
+                        sp:varName "labelSpecialisatie" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "businessObject" ;
               ] ;
           ]
         ) ;

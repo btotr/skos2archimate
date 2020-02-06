@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="id-f9013866-8b94-44a1-a570-7b14982366a0">
+      <name xml:lang="nl">voorbeeldinformatiemodel</name>
+      <elements >
+    	<element xsi:type="BusinessObject" identifier="id-116">
+        	<name>voorbeeld</name>
+    	</element>
+     </elements>
+</model>
