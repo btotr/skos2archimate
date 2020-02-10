@@ -177,20 +177,28 @@ xsi:type
         ) ;
       sp:where (
           [
-            sp:object <http://definities.politie.nl/id/begrippenstelsel/InformatieManagement> ;
-            sp:predicate <http://www.w3.org/2004/02/skos/core#topConceptOf> ;
-            sp:subject [
-                sp:varName "topConcept" ;
-              ] ;
+            sp:object "Dossier"@nl ;
+            sp:predicate <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+            sp:subject spin:_this ;
           ]
           [
-            sp:object [
-                sp:varName "topConcept" ;
-              ] ;
+            sp:object spin:_this ;
             sp:predicate <http://www.w3.org/2004/02/skos/core#broader> ;
             sp:subject [
                 sp:varName "specialisatie" ;
               ] ;
+          ]
+          [
+            a sp:NotExists ;
+            sp:elements (
+                [
+                  sp:object <http://definities.politie.nl/im/id/begrip/Relatie> ;
+                  sp:predicate <http://www.w3.org/2004/02/skos/core#broader> ;
+                  sp:subject [
+                      sp:varName "specialisatie" ;
+                    ] ;
+                ]
+              ) ;
           ]
           [
             sp:object [
