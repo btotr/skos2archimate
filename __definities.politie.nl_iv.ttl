@@ -1,4 +1,3 @@
-# baseURI: http://definities.politie.nl/iv
 # imports: http://purl.org/dc/terms/
 # imports: http://topbraid.org/imported
 # imports: http://topbraid.org/skos.shapes

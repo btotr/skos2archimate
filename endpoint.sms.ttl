@@ -33,21 +33,16 @@ endpoint:skos2archimate
   a spin:Function ;
   spin:constraint [
       a spl:Argument ;
+      spl:optional true ;
       spl:predicate endpoint:begrippenkader ;
       spl:valueType xsd:string ;
-      sm:next export:convert ;
-      sm:nodeX 240 ;
-      sm:nodeY 322 ;
+      sm:next export:ImportConverter ;
+      sm:nodeX 306 ;
+      sm:nodeY 93 ;
     ] ;
-  sm:returnModule endpoint:response ;
+  sm:returnModule export:response ;
   rdfs:comment "http://localhost:8083/tbl/sparqlmotion?id=skos2archimate&begrippenkader=im" ;
   rdfs:comment "the instance name is used as idenifier for the request" ;
   rdfs:label "request" ;
   rdfs:subClassOf sm:Functions ;
-.
-endpoint:response
-  a sml:ReturnText ;
-  sml:mimeType "plain/text" ;
-  sml:text "done!" ;
-  rdfs:label "response" ;
 .

@@ -1,11 +1,11 @@
-# baseURI: http://archimate.politie.nl/skos2archimate
+# baseURI: http://archimate.politie.nl/skos2archimate/converter
 # imports: http://definities.politie.nl/iv
 # imports: http://spinrdf.org/spin
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
 # imports: http://www.w3.org/XML/1998/namespace
-# prefix: s2a
+# prefix: converter
 
-@prefix : <http://archimate.politie.nl/skos2archimate#> .
+@prefix converter: <http://archimate.politie.nl/skos2archimate/converter#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -16,14 +16,15 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsi: <http://www.w3.org/2001/XMLSchema-instance#> .
 
-<http://archimate.politie.nl/skos2archimate>
+<http://archimate.politie.nl/skos2archimate/converter>
   a owl:Ontology ;
   owl:imports <http://definities.politie.nl/iv> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
   owl:imports <http://www.w3.org/XML/1998/namespace> ;
 .
-s2a:mapping
+
+converter:mapping
   a spin:ConstructTemplate ;
   spin:body [
       a sp:Construct ;
@@ -31,42 +32,47 @@ s2a:mapping
           [
             sp:object <http://www.opengroup.org/xsd/archimate/3.0/Model> ;
             sp:predicate rdf:type ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+            sp:subject converter:model ;
+          ]
+          [
+            sp:object sxml:Document ;
+            sp:predicate rdf:type ;
+            sp:subject converter:model ;
           ]
           [
             sp:object "http://www.opengroup.org/xsd/archimate/3.0/" ;
             sp:predicate xsi:schemaLocation ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+            sp:subject converter:model ;
           ]
           [
             sp:object <http://www.opengroup.org/xsd/archimate/3.0/nameRef> ;
             sp:predicate rdf:type ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/model-name> ;
+            sp:subject converter:model-name ;
           ]
           [
             sp:object "informatieobjectenmodel" ;
             sp:predicate <http://www.linkedmodel.org/schema/dtype#value> ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/model-name> ;
+            sp:subject converter:model-name ;
           ]
           [
-            sp:object <http://archimate.politie.nl/skos2archimate/model-name> ;
+            sp:object converter:model-name ;
             sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/nameRef> ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+            sp:subject converter:model ;
           ]
           [
             sp:object "id-f9013866-8b94-44a1-a570-7b14982366a0" ;
             sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+            sp:subject converter:model ;
           ]
           [
             sp:object <http://www.opengroup.org/xsd/archimate/3.0/ElementsType> ;
             sp:predicate rdf:type ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/elements> ;
+            sp:subject converter:elements ;
           ]
           [
-            sp:object <http://archimate.politie.nl/skos2archimate/elements> ;
+            sp:object converter:elements ;
             sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/elementsRef> ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/model> ;
+            sp:subject converter:model ;
           ]
           [
             sp:object <http://www.opengroup.org/xsd/archimate/3.0/BusinessObject> ;
@@ -80,7 +86,7 @@ s2a:mapping
                 sp:varName "businessObject" ;
               ] ;
             sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/elementRef> ;
-            sp:subject <http://archimate.politie.nl/skos2archimate/elements> ;
+            sp:subject converter:elements ;
           ]
           [
             sp:object [
@@ -323,6 +329,6 @@ xsi:type
 .
 <http://www.w3.org/2004/02/skos/core#Concept>
   spin:rule [
-      a s2a:mapping ;
+      a converter:mapping ;
     ] ;
 .

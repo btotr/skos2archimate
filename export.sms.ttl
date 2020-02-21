@@ -1,10 +1,10 @@
 # baseURI: http://archimate.politie.nl/skos2archimate/service/export
-# imports: http://archimate.politie.nl/skos2archimate
 # imports: http://archimate.politie.nl/skos2archimate/service
 # imports: http://topbraid.org/sparqlmotionlib
 # prefix: export
 
 @prefix arg: <http://spinrdf.org/arg#> .
+@prefix converter: <http://archimate.politie.nl/skos2archimate/converter#> .
 @prefix dbp: <http://dbpedia.org/property/> .
 @prefix dbpo: <http://dbpedia.org/ontology/> .
 @prefix endpoint: <http://archimate.politie.nl/skos2archimate/service#> .
@@ -12,7 +12,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos2archimate: <http://archimate.politie.nl/skos2archimate#> .
 @prefix sm: <http://topbraid.org/sparqlmotion#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sml: <http://topbraid.org/sparqlmotionlib#> .
@@ -23,18 +22,43 @@
 
 <http://archimate.politie.nl/skos2archimate/service/export>
   a owl:Ontology ;
-  owl:imports <http://archimate.politie.nl/skos2archimate> ;
   owl:imports <http://archimate.politie.nl/skos2archimate/service> ;
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
-export:convert
-  a sml:ApplyConstruct ;
-  sm:next endpoint:response ;
-  sm:nodeX 380 ;
-  sm:nodeY 537 ;
-  sml:constructQuery [
-      a skos2archimate:mapping ;
-    ] ;
-  sml:replace false ;
+export:ApplyTopSPIN
+  a sml:ApplyTopSPIN ;
+  sm:next export:ConvertRDFToXML ;
+  sm:nodeX 437 ;
+  sm:nodeY 452 ;
+  sml:predicate spin:rule ;
+  sml:replace true ;
+  sml:singlePass true ;
+  rdfs:label "Apply Inferencing" ;
+.
+export:ConvertRDFToXML
+  a sml:ConvertRDFToXML ;
+  sm:next export:Response ;
+  sm:nodeX 635 ;
+  sm:nodeY 718 ;
+  sm:outputVariable "archimatexml" ;
+  sml:document <http://archimate.politie.nl/skos2archimate/model> ;
+  rdfs:label "Convert RDF To XML" ;
+.
+export:ImportConverter
+  a sml:ImportRDFFromWorkspace ;
+  sm:next export:ApplyTopSPIN ;
+  sm:nodeX 740 ;
+  sm:nodeY 269 ;
+  sml:baseURI "http://archimate.politie.nl/skos2archimate/converter" ;
+  sml:ignoreImports false ;
+  rdfs:label "Import converter" ;
+.
+export:Response
+  a sml:ReturnXML ;
+  sm:nodeX 206 ;
+  sm:nodeY 865 ;
+  sml:mimeType "text/xml" ;
+  sml:xml "{?archimatexml}"^^rdf:XMLLiteral ;
+  rdfs:label "response" ;
 .
