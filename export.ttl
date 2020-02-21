@@ -1,4 +1,5 @@
 # baseURI: http://archimate.politie.nl/skos2archimate/service/export
+# imports: http://archimate.politie.nl/skos2archimate
 # imports: http://archimate.politie.nl/skos2archimate/service
 # imports: http://topbraid.org/sparqlmotionlib
 # prefix: export
@@ -6,11 +7,12 @@
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix dbp: <http://dbpedia.org/property/> .
 @prefix dbpo: <http://dbpedia.org/ontology/> .
-@prefix endpoint: <http://archimate.politie.nl/skos2archimate/service#>  .
+@prefix endpoint: <http://archimate.politie.nl/skos2archimate/service#> .
 @prefix export: <http://archimate.politie.nl/skos2archimate/service/export#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos2archimate: <http://archimate.politie.nl/skos2archimate#> .
 @prefix sm: <http://topbraid.org/sparqlmotion#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sml: <http://topbraid.org/sparqlmotionlib#> .
@@ -21,6 +23,7 @@
 
 <http://archimate.politie.nl/skos2archimate/service/export>
   a owl:Ontology ;
+  owl:imports <http://archimate.politie.nl/skos2archimate> ;
   owl:imports <http://archimate.politie.nl/skos2archimate/service> ;
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
@@ -31,9 +34,7 @@ export:convert
   sm:nodeX 380 ;
   sm:nodeY 537 ;
   sml:constructQuery [
-      a sp:Construct ;
-      sp:templates () ;
-      sp:where () ;
+      a skos2archimate:mapping ;
     ] ;
   sml:replace false ;
 .
