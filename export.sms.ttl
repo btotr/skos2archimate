@@ -1,5 +1,4 @@
 # baseURI: http://archimate.politie.nl/skos2archimate/service/export
-# imports: http://archimate.politie.nl/skos2archimate/service
 # imports: http://topbraid.org/sparqlmotionlib
 # prefix: export
 
@@ -22,7 +21,6 @@
 
 <http://archimate.politie.nl/skos2archimate/service/export>
   a owl:Ontology ;
-  owl:imports <http://archimate.politie.nl/skos2archimate/service> ;
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
