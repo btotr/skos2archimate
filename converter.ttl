@@ -23,21 +23,9 @@
   owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
   owl:imports <http://www.w3.org/XML/1998/namespace> ;
 .
-<http://www.opengroup.org/xsd/archimate/3.0/Model>
-  sxml:prefix "archimate" ;
-.
-xsi:schemaLocation
-  a owl:DatatypeProperty ;
-  sxml:attribute "xsi:schemaLocation" ;
-  rdfs:label "xsi:schemaLocation" ;
-.
-xsi:type
-  a owl:DatatypeProperty ;
-  sxml:attribute "xsi:type" ;
-  rdfs:label "xsi:type" ;
-.
-<http://www.w3.org/2004/02/skos/core#Concept>
-  spin:rule [
+s2a:mapping
+  a spin:ConstructTemplate ;
+  spin:body [
       a sp:Construct ;
       sp:templates (
           [
@@ -316,5 +304,25 @@ xsi:type
               ] ;
           ]
         ) ;
+    ] ;
+  spin:labelTemplate "mapping" ;
+  rdfs:subClassOf spin:ConstructTemplates ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/Model>
+  sxml:prefix "archimate" ;
+.
+xsi:schemaLocation
+  a owl:DatatypeProperty ;
+  sxml:attribute "xsi:schemaLocation" ;
+  rdfs:label "xsi:schemaLocation" ;
+.
+xsi:type
+  a owl:DatatypeProperty ;
+  sxml:attribute "xsi:type" ;
+  rdfs:label "xsi:type" ;
+.
+<http://www.w3.org/2004/02/skos/core#Concept>
+  spin:rule [
+      a s2a:mapping ;
     ] ;
 .
