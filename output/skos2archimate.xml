@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<archimate:model xmlns:archimate="http://www.opengroup.org/xsd/archimate/3.0" archimate:identifier="id-f9013866-8b94-44a1-a570-7b14982366a0">
+    <archimate:name>informatieobjectenmodel</archimate:name>
+    <archimate:elements>
+        <archimate:element archimate:identifier="id-12286.0e0">
+            <archimate:documentation>Een activiteitdossier is een dossier welke de gegevens bevat over de regie en uitvoering van een activiteit.</archimate:documentation>
+            <archimate:name>Activiteit dossier</archimate:name>
+        </archimate:element>
+        <archimate:element archimate:identifier="id-47335.0e0">
+            <archimate:name>Beheer dossier</archimate:name>
+            <archimate:documentation>Een beheerdossier is een dossier bedoeld voor het adequaat beheer van een persoon of fysiek object welke komt onder de verantwoordelijkheid van de politie.</archimate:documentation>
+        </archimate:element>
+        <archimate:element archimate:identifier="id-26659.0e0">
+            <archimate:name>Goed beheer dossier</archimate:name>
+            <archimate:documentation>Een goed beheer dossier is een beheerdossier voor goederen.</archimate:documentation>
+        </archimate:element>
+        <archimate:element archimate:identifier="id-13434.0e0">
+            <archimate:documentation>Een Signaaldossier is een dossier bedoeld voor het ontvangen van een signaal.</archimate:documentation>
+            <archimate:name>Signaal dossier </archimate:name>
+        </archimate:element>
+        <archimate:element archimate:identifier="id-4536.0e0">
+            <archimate:documentation>Een Focus dossier is een dossier die gegevens over dingen in de buitenwereled verzamelt die het politieproces ondersteunen</archimate:documentation>
+            <archimate:name>Focus dossier</archimate:name>
+        </archimate:element>
+        <archimate:element archimate:identifier="id-11855.0e0">
+            <archimate:documentation>...</archimate:documentation>
+            <archimate:name>Organisatorische eenheid dossier</archimate:name>
+        </archimate:element>
+        <archimate:element archimate:identifier="id-62088.0e0">
+            <archimate:name>Persoon beheer dossier</archimate:name>
+            <archimate:documentation>Een persoonbeheerdossier is een beheerdossier speciaal voor het beheer van de gegvens van een natuurlijk persoon.</archimate:documentation>
+        </archimate:element>
+        <archimate:element archimate:identifier="id-99797.0e0">
+            <archimate:name>Dienstverband dossier</archimate:name>
+            <archimate:documentation>Een dienstverbanddossier is een dossier bedoeld voor alle gegevens die hangen aan een dienstverband.</archimate:documentation>
+        </archimate:element>
+        <archimate:element archimate:identifier="id-95288.0e0">
+            <archimate:name>Opvolgingsdossier</archimate:name>
+            <archimate:documentation>Een opvolgingsdossier is een dossier bedoeld voor de regie op, weergave van, het opvolgen van signalen.</archimate:documentation>
+        </archimate:element>
+    </archimate:elements>
+</archimate:model>

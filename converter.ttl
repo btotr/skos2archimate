@@ -23,7 +23,6 @@
   owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
   owl:imports <http://www.w3.org/XML/1998/namespace> ;
 .
-
 converter:mapping
   a spin:ConstructTemplate ;
   spin:body [
@@ -31,11 +30,6 @@ converter:mapping
       sp:templates (
           [
             sp:object <http://www.opengroup.org/xsd/archimate/3.0/Model> ;
-            sp:predicate rdf:type ;
-            sp:subject converter:model ;
-          ]
-          [
-            sp:object sxml:Document ;
             sp:predicate rdf:type ;
             sp:subject converter:model ;
           ]
