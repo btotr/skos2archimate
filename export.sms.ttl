@@ -57,8 +57,8 @@ export:ImportConverter
 export:ImportRDFFromWorkspace_3
   a sml:ImportRDFFromWorkspace ;
   sm:next export:ConvertRDFToXML ;
-  sm:nodeX 91 ;
-  sm:nodeY 444 ;
+  sm:nodeX 43 ;
+  sm:nodeY 458 ;
   sml:baseURI "http://skos2archimate.politie.nl/export/" ;
   sml:ignoreImports false ;
   sml:sourceFilePath "output/skos2archimate.rdf" ;
