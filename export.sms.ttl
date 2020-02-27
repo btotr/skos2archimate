@@ -31,7 +31,7 @@ export:ApplyTopSPIN
   sm:nodeY 457 ;
   sml:flatten false ;
   sml:predicate spin:rule ;
-  sml:replace true ;
+  sml:replace false ;
   sml:singlePass true ;
   rdfs:label "Apply Inferencing" ;
 .
@@ -54,20 +54,10 @@ export:ImportConverter
   sml:sourceFilePath "converter.ttl" ;
   rdfs:label "Import converter" ;
 .
-export:ImportRDFFromWorkspace_3
-  a sml:ImportRDFFromWorkspace ;
-  sm:next export:ConvertRDFToXML ;
-  sm:nodeX 43 ;
-  sm:nodeY 458 ;
-  sml:baseURI "http://skos2archimate.politie.nl/export/" ;
-  sml:ignoreImports false ;
-  sml:sourceFilePath "output/skos2archimate.rdf" ;
-  rdfs:label "Import RDFFrom workspace 3" ;
-.
 export:Response
   a sml:ReturnXML ;
-  sm:nodeX 474 ;
-  sm:nodeY 871 ;
+  sm:nodeX 475 ;
+  sm:nodeY 876 ;
   sml:mimeType "text/xml" ;
   sml:xml "{?archimatexml}"^^rdf:XMLLiteral ;
   rdfs:label "response" ;
