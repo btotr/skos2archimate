@@ -35,18 +35,13 @@ export:ApplyTopSPIN
 .
 export:ConvertRDFToXML
   a sml:ConvertRDFToXML ;
-  sm:next export:ConvertXMLByXSLT ;
+  sm:next export:fixOrder ;
+  sm:nodeX 598 ;
+  sm:nodeY 57 ;
   sm:outputVariable "archimatexml" ;
   sml:document converter:TheDocument ;
+  sml:isAttributeUnqualified "true" ;
   rdfs:label "Convert RDF To XML" ;
-.
-export:ConvertXMLByXSLT
-  a sml:ConvertXMLByXSLT ;
-  sm:next export:Response ;
-  sm:outputVariable "xml" ;
-  sml:template "{?stylesheet}" ;
-  sml:xml "{?archimatexml}"^^rdf:XMLLiteral ;
-  rdfs:label "Convert XMLBy XSLT" ;
 .
 export:ImportConverter
   a sml:ImportRDFFromWorkspace ;
@@ -56,17 +51,31 @@ export:ImportConverter
   sml:sourceFilePath "converter.ttl" ;
   rdfs:label "Import converter" ;
 .
-export:ImportXSLT
+export:ImportXMLFile_1
   a sml:ImportXMLFile ;
-  sm:next export:ConvertXMLByXSLT ;
-  sm:outputVariable "stylesheet" ;
+  sm:next export:fixOrder ;
+  sm:nodeX 268 ;
+  sm:nodeY 462 ;
+  sm:outputVariable "stylesheet2" ;
   sml:ignoreDoctype true ;
-  sml:sourceFilePath "archimate.xslt" ;
-  rdfs:label "Import XSLT" ;
+  sml:sourceFilePath "fix-xml.xslt" ;
+  rdfs:label "Import XMLFile" ;
 .
 export:Response
   a sml:ReturnXML ;
+  sm:nodeX 1208 ;
+  sm:nodeY 479 ;
   sml:mimeType "text/xml" ;
   sml:xml "?xml"^^rdf:XMLLiteral ;
   rdfs:label "response" ;
+.
+export:fixOrder
+  a sml:ConvertXMLByXSLT ;
+  sm:next export:Response ;
+  sm:nodeX 575 ;
+  sm:nodeY 442 ;
+  sm:outputVariable "xml" ;
+  sml:template "{?stylesheet2}" ;
+  sml:xml "{?archimatexml}"^^rdf:XMLLiteral ;
+  rdfs:label "fix xml" ;
 .

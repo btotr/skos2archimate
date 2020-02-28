@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<archimate:model xmlns:archimate="http://www.opengroup.org/xsd/archimate/3.0" archimate:identifier="id-f9013866-8b94-44a1-a570-7b14982366a0">
+<archimate:model xmlns:archimate="http://www.opengroup.org/xsd/archimate/3.0" archimate:identifier="id-f9013866-8b94-44a1-a570-7b14982366a0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengroup.org/xsd/archimate/3.0/">
     <archimate:name>informatieobjectenmodel</archimate:name>
     <archimate:elements>
         <archimate:element archimate:identifier="id-12286.0e0">

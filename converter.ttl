@@ -132,29 +132,6 @@ converter:mapping
               ] ;
           ]
           [
-            sp:object <http://www.opengroup.org/xsd/archimate/3.0/documentationRef> ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "definition" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "definitionText" ;
-              ] ;
-            sp:predicate <http://www.linkedmodel.org/schema/dtype#value> ;
-            sp:subject [
-                sp:varName "definition" ;
-              ] ;
-          ]
-          [
-            sp:object 2 ;
-            sp:predicate sxml:order ;
-            sp:subject [
-                sp:varName "definition" ;
-              ] ;
-          ]
-          [
             sp:object <http://www.opengroup.org/xsd/archimate/3.0/nameRef> ;
             sp:predicate rdf:type ;
             sp:subject [
@@ -171,10 +148,33 @@ converter:mapping
               ] ;
           ]
           [
-            sp:object 1 ;
+            sp:object "1"^^xsd:int ;
             sp:predicate sxml:order ;
             sp:subject [
                 sp:varName "name" ;
+              ] ;
+          ]
+          [
+            sp:object <http://www.opengroup.org/xsd/archimate/3.0/documentationRef> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "definition" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "definitionText" ;
+              ] ;
+            sp:predicate <http://www.linkedmodel.org/schema/dtype#value> ;
+            sp:subject [
+                sp:varName "definition" ;
+              ] ;
+          ]
+          [
+            sp:object "2"^^xsd:int ;
+            sp:predicate sxml:order ;
+            sp:subject [
+                sp:varName "definition" ;
               ] ;
           ]
         ) ;
