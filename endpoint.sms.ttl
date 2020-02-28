@@ -40,7 +40,7 @@ endpoint:skos2archimate
       sm:nodeX 306 ;
       sm:nodeY 93 ;
     ] ;
-  sm:returnModule export:response ;
+  sm:returnModule export:Response ;
   rdfs:comment "http://localhost:8083/tbl/sparqlmotion?id=skos2archimate&begrippenkader=im" ;
   rdfs:comment "the instance name is used as idenifier for the request" ;
   rdfs:label "request" ;
