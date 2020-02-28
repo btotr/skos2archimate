@@ -27,8 +27,6 @@
 export:ApplyTopSPIN
   a sml:ApplyTopSPIN ;
   sm:next export:ConvertRDFToXML ;
-  sm:nodeX 446 ;
-  sm:nodeY 457 ;
   sml:flatten false ;
   sml:predicate spin:rule ;
   sml:replace false ;
@@ -37,28 +35,38 @@ export:ApplyTopSPIN
 .
 export:ConvertRDFToXML
   a sml:ConvertRDFToXML ;
-  sm:next export:Response ;
-  sm:nodeX 440 ;
-  sm:nodeY 668 ;
+  sm:next export:ConvertXMLByXSLT ;
   sm:outputVariable "archimatexml" ;
-  sml:document converter:model ;
+  sml:document converter:TheDocument ;
   rdfs:label "Convert RDF To XML" ;
+.
+export:ConvertXMLByXSLT
+  a sml:ConvertXMLByXSLT ;
+  sm:next export:Response ;
+  sm:outputVariable "xml" ;
+  sml:template "{?stylesheet}" ;
+  sml:xml "{?archimatexml}"^^rdf:XMLLiteral ;
+  rdfs:label "Convert XMLBy XSLT" ;
 .
 export:ImportConverter
   a sml:ImportRDFFromWorkspace ;
   sm:next export:ApplyTopSPIN ;
-  sm:nodeX 454 ;
-  sm:nodeY 256 ;
   sml:baseURI "http://archimate.politie.nl/skos2archimate/converter" ;
   sml:ignoreImports false ;
   sml:sourceFilePath "converter.ttl" ;
   rdfs:label "Import converter" ;
 .
+export:ImportXSLT
+  a sml:ImportXMLFile ;
+  sm:next export:ConvertXMLByXSLT ;
+  sm:outputVariable "stylesheet" ;
+  sml:ignoreDoctype true ;
+  sml:sourceFilePath "archimate.xslt" ;
+  rdfs:label "Import XSLT" ;
+.
 export:Response
   a sml:ReturnXML ;
-  sm:nodeX 475 ;
-  sm:nodeY 876 ;
   sml:mimeType "text/xml" ;
-  sml:xml "{?archimatexml}"^^rdf:XMLLiteral ;
+  sml:xml "?xml"^^rdf:XMLLiteral ;
   rdfs:label "response" ;
 .
