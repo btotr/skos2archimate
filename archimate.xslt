@@ -3,7 +3,7 @@
   <xsl:param name="uri">default</xsl:param>
  
   <xsl:template match="*">
-        <xsl:element name="{local-name()}" namespace="http://www.opengroup.org/xsd/archimate/3.0" >
+        <xsl:element name="{local-name()}" namespace="http://www.opengroup.org/xsd/archimate/3.0/" >
             <xsl:copy-of select="attribute::*"/>
             <xsl:apply-templates />
         </xsl:element>
