@@ -27,6 +27,8 @@
 export:ApplyTopSPIN
   a sml:ApplyTopSPIN ;
   sm:next export:ConvertRDFToXML ;
+  sm:nodeX 594 ;
+  sm:nodeY 52 ;
   sml:flatten false ;
   sml:predicate spin:rule ;
   sml:replace false ;
@@ -36,8 +38,8 @@ export:ApplyTopSPIN
 export:ConvertRDFToXML
   a sml:ConvertRDFToXML ;
   sm:next export:fixOrder ;
-  sm:nodeX 598 ;
-  sm:nodeY 57 ;
+  sm:nodeX 1065 ;
+  sm:nodeY 48 ;
   sm:outputVariable "archimatexml" ;
   sml:document converter:TheDocument ;
   sml:isAttributeUnqualified "true" ;
@@ -46,6 +48,8 @@ export:ConvertRDFToXML
 export:ImportConverter
   a sml:ImportRDFFromWorkspace ;
   sm:next export:ApplyTopSPIN ;
+  sm:nodeX 200 ;
+  sm:nodeY 46 ;
   sml:baseURI "http://archimate.politie.nl/skos2archimate/converter" ;
   sml:ignoreImports false ;
   sml:sourceFilePath "converter.ttl" ;

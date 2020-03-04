@@ -37,8 +37,8 @@ endpoint:skos2archimate
       spl:predicate endpoint:begrippenkader ;
       spl:valueType xsd:string ;
       sm:next export:ImportConverter ;
-      sm:nodeX 306 ;
-      sm:nodeY 93 ;
+      sm:nodeX 79 ;
+      sm:nodeY 268 ;
     ] ;
   sm:returnModule export:Response ;
   rdfs:comment "http://localhost:8083/tbl/sparqlmotion?id=skos2archimate&begrippenkader=im" ;

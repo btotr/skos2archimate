@@ -2,6 +2,7 @@
 # imports: http://definities.politie.nl/iv
 # imports: http://spinrdf.org/spin
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
+# imports: http://www.topbraid.org/2007/05/composite.owl
 # imports: http://www.w3.org/XML/1998/namespace
 # prefix: converter
 
@@ -21,6 +22,7 @@
   owl:imports <http://definities.politie.nl/iv> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
+  owl:imports <http://www.topbraid.org/2007/05/composite.owl> ;
   owl:imports <http://www.w3.org/XML/1998/namespace> ;
 .
 converter:TheDocument
@@ -149,7 +151,7 @@ converter:mapping
           ]
           [
             sp:object "1"^^xsd:int ;
-            sp:predicate sxml:order ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#index> ;
             sp:subject [
                 sp:varName "name" ;
               ] ;
@@ -172,7 +174,7 @@ converter:mapping
           ]
           [
             sp:object "2"^^xsd:int ;
-            sp:predicate sxml:order ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#index> ;
             sp:subject [
                 sp:varName "definition" ;
               ] ;
