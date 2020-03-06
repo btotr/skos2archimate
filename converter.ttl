@@ -1,6 +1,6 @@
 # baseURI: http://archimate.politie.nl/skos2archimate/converter
-# imports: http://definities.politie.nl/iv
 # imports: http://spinrdf.org/spin
+# imports: http://taxonomy.politie.nl/
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
 # imports: http://www.topbraid.org/2007/05/composite.owl
 # imports: http://www.w3.org/XML/1998/namespace
@@ -19,8 +19,8 @@
 
 <http://archimate.politie.nl/skos2archimate/converter>
   a owl:Ontology ;
-  owl:imports <http://definities.politie.nl/iv> ;
   owl:imports <http://spinrdf.org/spin> ;
+  owl:imports <http://taxonomy.politie.nl/> ;
   owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
   owl:imports <http://www.topbraid.org/2007/05/composite.owl> ;
   owl:imports <http://www.w3.org/XML/1998/namespace> ;

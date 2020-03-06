@@ -1,0 +1,46 @@
+# baseURI: http://taxonomy.politie.nl/
+# imports: http://purl.org/dc/terms/
+# imports: http://topbraid.org/imported
+# imports: http://topbraid.org/skos.shapes
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix begrippenstelsel: <http://definities.politie.nl/id/begrippenstelsel/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix im_begrip: <http://definities.politie.nl/im/id/begrip/> .
+@prefix metadata: <http://topbraid.org/metadata#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+begrippenstelsel:InformatieManagement
+  a skos:ConceptScheme ;
+  skos:hasTopConcept im_begrip:Dossier ;
+  skos:prefLabel "Begrippenstelsel Informatie Management"@nl ;
+.
+im_begrip:VoorbeeldDossier
+  a skos:Concept ;
+  skos:broader im_begrip:Dossier ;
+  skos:definition "Een voorbeelddossier is een dossier bedoeld als vorbeeld voor een PoC"@nl ;
+  skos:inScheme begrippenstelsel:InformatieManagement ;
+  skos:prefLabel "Voorbeeld dossier"@nl ;
+.
+im_begrip:Dossier
+  a skos:Concept ;
+  skos:definition "Een dossier is een samenhangend geheel van gegevens en gedrag betrekking hebbende op één onderwerp ten behoeve van regie, uitvoering of overzicht."@nl ;
+  skos:inScheme begrippenstelsel:InformatieManagement ;
+  skos:prefLabel "Dossier"@nl ;
+  skos:topConceptOf begrippenstelsel:InformatieManagement ;
+.
+
+<http://taxonomy.politie.nl/>
+  a owl:Ontology ;
+  metadata:status metadata:UnderDevelopmentStatus ;
+  rdfs:label "Begrippenkader Informatie Management" ;
+  owl:imports dcterms: ;
+  owl:imports <http://topbraid.org/imported> ;
+  owl:imports <http://topbraid.org/skos.shapes> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
