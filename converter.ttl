@@ -1,4 +1,6 @@
 # baseURI: http://archimate.politie.nl/skos2archimate/converter
+# imports: http://archimate.politie.nl/skos2archimate/ui
+# imports: http://bedrijfsarchitectuur.politie.nl/
 # imports: http://spinrdf.org/spin
 # imports: http://taxonomy.politie.nl/
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
@@ -22,6 +24,8 @@
 
 <http://archimate.politie.nl/skos2archimate/converter>
   a owl:Ontology ;
+  owl:imports <http://archimate.politie.nl/skos2archimate/ui> ;
+  owl:imports <http://bedrijfsarchitectuur.politie.nl/> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://taxonomy.politie.nl/> ;
   owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
@@ -145,7 +149,7 @@ converter:mapping
           ]
           [
             sp:object [
-                sp:varName "labelSpecialisatie" ;
+                sp:varName "label" ;
               ] ;
             sp:predicate <http://www.linkedmodel.org/schema/dtype#value> ;
             sp:subject [
@@ -185,17 +189,24 @@ converter:mapping
         ) ;
       sp:where (
           [
-            sp:object [
-                sp:varName "any" ;
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://definities.politie.nl/id/begrippenstelsel/" ;
+                    sp:arg2 "Bedrijfsarchitectuur" ;
+                  ] ;
               ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject spin:_this ;
+            sp:variable [
+                sp:varName "begrippenstelsel" ;
+              ] ;
           ]
           [
             sp:object spin:_this ;
-            sp:predicate skos:broader ;
+            sp:predicate skos:hasTopConcept ;
             sp:subject [
-                sp:varName "specialisatie" ;
+                sp:varName "begrippenstelsel" ;
               ] ;
           ]
           [
@@ -204,20 +215,16 @@ converter:mapping
                 [
                   sp:object <http://definities.politie.nl/im/id/begrip/Relatie> ;
                   sp:predicate skos:broader ;
-                  sp:subject [
-                      sp:varName "specialisatie" ;
-                    ] ;
+                  sp:subject spin:_this ;
                 ]
               ) ;
           ]
           [
             sp:object [
-                sp:varName "labelSpecialisatie" ;
+                sp:varName "label" ;
               ] ;
             sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "specialisatie" ;
-              ] ;
+            sp:subject spin:_this ;
           ]
           [
             a sp:Optional ;
@@ -227,9 +234,7 @@ converter:mapping
                       sp:varName "definitionText" ;
                     ] ;
                   sp:predicate skos:definition ;
-                  sp:subject [
-                      sp:varName "specialisatie" ;
-                    ] ;
+                  sp:subject spin:_this ;
                 ]
               ) ;
           ]
@@ -238,7 +243,7 @@ converter:mapping
             sp:expression [
                 a sp:encode_for_uri ;
                 sp:arg1 [
-                    sp:varName "labelSpecialisatie" ;
+                    sp:varName "label" ;
                   ] ;
               ] ;
             sp:variable [

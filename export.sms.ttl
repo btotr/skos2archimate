@@ -1,4 +1,5 @@
 # baseURI: http://archimate.politie.nl/skos2archimate/service/export
+# imports: http://archimate.politie.nl/skos2archimate/service
 # imports: http://topbraid.org/sparqlmotionlib
 # prefix: export
 
@@ -21,15 +22,15 @@
 
 <http://archimate.politie.nl/skos2archimate/service/export>
   a owl:Ontology ;
+  owl:imports <http://archimate.politie.nl/skos2archimate/service> ;
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
-
 export:ApplyTopSPIN
   a sml:ApplyTopSPIN ;
   sm:next export:ConvertRDFToXML ;
-  sm:nodeX 594 ;
-  sm:nodeY 52 ;
+  sm:nodeX 648 ;
+  sm:nodeY 47 ;
   sml:flatten false ;
   sml:predicate spin:rule ;
   sml:replace false ;
@@ -48,7 +49,6 @@ export:ConvertRDFToXML
 .
 export:ImportConverter
   a sml:ImportRDFFromWorkspace ;
-  sm:next export:ApplyTopSPIN ;
   sm:nodeX 200 ;
   sm:nodeY 46 ;
   sml:baseURI "http://archimate.politie.nl/skos2archimate/converter" ;

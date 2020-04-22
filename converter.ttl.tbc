@@ -14,10 +14,10 @@
   composite:child [
       a <http://spinrdf.org/spin#TopSPIN> ;
       <http://spinrdf.org/spin#topSPINOptions> "singlePass" ;
-      composite:index "0"^^xsd:int ;
+      composite:index "1"^^xsd:int ;
     ] ;
   composite:child [
       a <http://www.w3.org/ns/shacl#TopSHACL> ;
-      composite:index "1"^^xsd:int ;
+      composite:index "0"^^xsd:int ;
     ] ;
 ].

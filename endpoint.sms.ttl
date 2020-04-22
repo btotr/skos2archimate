@@ -25,6 +25,14 @@
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
+endpoint:ApplySHACLRules
+  a sml:ApplySHACLRules ;
+  sm:next export:ApplyTopSPIN ;
+  sm:nodeX 480 ;
+  sm:nodeY 183 ;
+  sml:replace false ;
+  rdfs:label "Apply SHACLRules" ;
+.
 endpoint:begrippenkader
   a owl:DatatypeProperty ;
   rdfs:label "begrippenkader" ;
@@ -33,16 +41,20 @@ endpoint:skos2archimate
   a spin:Function ;
   spin:constraint [
       a spl:Argument ;
+      spl:defaultValue "Bedrijfsarchitectuur" ;
       spl:optional true ;
       spl:predicate endpoint:begrippenkader ;
       spl:valueType xsd:string ;
       sm:next export:ImportConverter ;
-      sm:nodeX 79 ;
-      sm:nodeY 268 ;
+      sm:nodeX 49 ;
+      sm:nodeY 263 ;
     ] ;
   sm:returnModule export:Response ;
   rdfs:comment "http://localhost:8083/tbl/sparqlmotion?id=skos2archimate&begrippenkader=im" ;
   rdfs:comment "the instance name is used as idenifier for the request" ;
   rdfs:label "request" ;
   rdfs:subClassOf sm:Functions ;
+.
+export:ImportConverter
+  sm:next endpoint:ApplySHACLRules ;
 .
