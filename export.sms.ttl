@@ -55,6 +55,7 @@ export:ImportConverter
   sml:ignoreImports false ;
   sml:sourceFilePath "converter.ttl" ;
   rdfs:label "Import converter" ;
+   sm:next export:ApplySHACLRules ;
 .
 export:ImportXMLFile_1
   a sml:ImportXMLFile ;
@@ -84,3 +85,12 @@ export:fixOrder
   sml:xml "{?archimatexml}"^^rdf:XMLLiteral ;
   rdfs:label "fix xml" ;
 .
+
+
+export:ApplySHACLRules
+  a sml:ApplySHACLRules ;
+  sm:next export:ApplyTopSPIN ;
+  sm:nodeX 516 ;
+  sm:nodeY 237 ;
+  sml:replace false ;
+  rdfs:label "Apply SHACLRules" ;
