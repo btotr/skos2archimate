@@ -1,0 +1,33 @@
+# baseURI: http://archimate.politie.nl/skos2archimate/ui
+# imports: http://bedrijfsarchitectuur.politie.nl/
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ui: <http://archimate.politie.nl/skos2archimate/ui/#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://archimate.politie.nl/skos2archimate/ui>
+  a owl:Ontology ;
+  owl:imports <http://bedrijfsarchitectuur.politie.nl/> ;
+.
+<http://archimate.politie.nl/skos2archimate/ui#isBedrijfsobject>
+  a owl:AnnotationProperty ;
+  a owl:DatatypeProperty ;
+  rdfs:domain skos:Concept ;
+  rdfs:isDefinedBy <http://archimate.politie.nl/skos2archimate/ui> ;
+  rdfs:label "is bedrijfsobject" ;
+  rdfs:range xsd:boolean ;
+.
+<http://archimate.politie.nl/skos2archimate/ui/>
+  a owl:Ontology ;
+.
+skos:isBedrijfsObject
+  a sh:PropertyShape ;
+  sh:path <http://archimate.politie.nl/skos2archimate/ui#isBedrijfsobject> ;
+  sh:description "todo"@en ;
+  sh:group skos:NotesPropertyGroup ;
+  sh:order 1 ;
+.

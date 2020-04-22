@@ -1,0 +1,85 @@
+# baseURI: http://bedrijfsarchitectuur.politie.nl/
+# imports: http://archimate.politie.nl/skos2archimate/ui
+# imports: http://purl.org/dc/terms/
+# imports: http://topbraid.org/imported
+# imports: http://topbraid.org/skos.shapes
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix ba_begrip: <http://definities.politie.nl/ba/id/begrip/> .
+@prefix begrippenstelsel: <http://definities.politie.nl/id/begrippenstelsel/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix metadata: <http://topbraid.org/metadata#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ui: <http://archimate.politie.nl/skos2archimate/ui#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://bedrijfsarchitectuur.politie.nl/>
+  a owl:Ontology ;
+  metadata:status metadata:UnderDevelopmentStatus ;
+  rdfs:label "Begrippenkader Bedrijfsarchitectuur" ;
+  owl:imports <http://archimate.politie.nl/skos2archimate/ui> ;
+  owl:imports dcterms: ;
+  owl:imports <http://topbraid.org/imported> ;
+  owl:imports <http://topbraid.org/skos.shapes> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+  sh:entailment sh:Rules ;
+.
+ba_begrip:addHasTopConceptRule
+  a sh:SPARQLRule ;
+  rdfs:label "add a top concept" ;
+  sh:construct """
+			CONSTRUCT {
+				begrippenstelsel:Bedrijfsarchitectuur skos:hasTopConcept $this .
+			}
+			WHERE {
+				$this ui:isBedrijfsobject \"true\"^^xsd:boolean  .
+			}
+			
+	""" ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://archimate.politie.nl/skos2archimate/ui#"^^xsd:anyURI ;
+          sh:prefix "ui" ;
+        ] ;
+    ] ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://definities.politie.nl/id/begrippenstelsel/"^^xsd:anyURI ;
+          sh:prefix "begrippenstelsel" ;
+        ] ;
+    ] ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ;
+          sh:prefix "xsd" ;
+        ] ;
+    ] ;
+  sh:prefixes [
+      sh:declare [
+          sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+          sh:prefix "skos" ;
+        ] ;
+    ] ;
+.
+ba_begrip:informatieobject
+  a skos:Concept ;
+  skos:definition "Een informatie object is een bedrijfsobject waar dingen over geregistreerd kan worden"@nl ;
+  skos:inScheme begrippenstelsel:Bedrijfsarchitectuur ;
+  skos:prefLabel "Informatieobject"@nl ;
+.
+
+begrippenstelsel:Bedrijfsarchitectuur
+  a owl:Class ;
+  a skos:ConceptScheme ;
+  a sh:NodeShape ;
+  skos:hasTopConcept ba_begrip:informatieobject ;
+  skos:prefLabel "begrippen bedrijfsarchitectuur"@nl ;
+.
+skos:Concept
+  sh:rule ba_begrip:addHasTopConceptRule ;
+.

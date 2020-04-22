@@ -24,6 +24,7 @@
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
+
 export:ApplyTopSPIN
   a sml:ApplyTopSPIN ;
   sm:next export:ConvertRDFToXML ;

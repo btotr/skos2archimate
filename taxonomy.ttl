@@ -1,4 +1,5 @@
 # baseURI: http://taxonomy.politie.nl/
+# imports: http://archimate.politie.nl/skos2archimate/ui
 # imports: http://purl.org/dc/terms/
 # imports: http://topbraid.org/imported
 # imports: http://topbraid.org/skos.shapes
@@ -12,19 +13,13 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ui: <http://archimate.politie.nl/skos2archimate/ui/#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 begrippenstelsel:InformatieManagement
   a skos:ConceptScheme ;
   skos:hasTopConcept im_begrip:Dossier ;
   skos:prefLabel "Begrippenstelsel Informatie Management"@nl ;
-.
-im_begrip:VoorbeeldDossier
-  a skos:Concept ;
-  skos:broader im_begrip:Dossier ;
-  skos:definition "Een voorbeelddossier is een dossier bedoeld als vorbeeld voor een PoC"@nl ;
-  skos:inScheme begrippenstelsel:InformatieManagement ;
-  skos:prefLabel "Voorbeeld dossier"@nl ;
 .
 im_begrip:Dossier
   a skos:Concept ;
@@ -33,11 +28,26 @@ im_begrip:Dossier
   skos:prefLabel "Dossier"@nl ;
   skos:topConceptOf begrippenstelsel:InformatieManagement ;
 .
-
+im_begrip:VoorbeeldBedrijfsDossier
+  a skos:Concept ;
+  <http://archimate.politie.nl/skos2archimate/ui#isBedrijfsobject> true ;
+  skos:broader im_begrip:Dossier ;
+  skos:definition "Een voorbeeld bedrijfs dossier"@nl ;
+  skos:inScheme begrippenstelsel:InformatieManagement ;
+  skos:prefLabel "Voorbeeld bedrijfs dossier"@nl ;
+.
+im_begrip:VoorbeeldDossier
+  a skos:Concept ;
+  skos:broader im_begrip:Dossier ;
+  skos:definition "Een voorbeelddossier is een dossier bedoeld als vorbeeld voor een PoC"@nl ;
+  skos:inScheme begrippenstelsel:InformatieManagement ;
+  skos:prefLabel "Voorbeeld dossier"@nl ;
+.
 <http://taxonomy.politie.nl/>
   a owl:Ontology ;
   metadata:status metadata:UnderDevelopmentStatus ;
   rdfs:label "Begrippenkader Informatie Management" ;
+  owl:imports <http://archimate.politie.nl/skos2archimate/ui> ;
   owl:imports dcterms: ;
   owl:imports <http://topbraid.org/imported> ;
   owl:imports <http://topbraid.org/skos.shapes> ;

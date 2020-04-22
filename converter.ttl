@@ -7,10 +7,13 @@
 # prefix: converter
 
 @prefix converter: <http://archimate.politie.nl/skos2archimate/converter#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix s2a: <http://archimate.politie.nl/skos2archimate#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix sxml: <http://topbraid.org/sxml#> .
@@ -182,13 +185,15 @@ converter:mapping
         ) ;
       sp:where (
           [
-            sp:object "Dossier"@nl ;
-            sp:predicate <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+            sp:object [
+                sp:varName "any" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
             sp:subject spin:_this ;
           ]
           [
             sp:object spin:_this ;
-            sp:predicate <http://www.w3.org/2004/02/skos/core#broader> ;
+            sp:predicate skos:broader ;
             sp:subject [
                 sp:varName "specialisatie" ;
               ] ;
@@ -198,7 +203,7 @@ converter:mapping
             sp:elements (
                 [
                   sp:object <http://definities.politie.nl/im/id/begrip/Relatie> ;
-                  sp:predicate <http://www.w3.org/2004/02/skos/core#broader> ;
+                  sp:predicate skos:broader ;
                   sp:subject [
                       sp:varName "specialisatie" ;
                     ] ;
@@ -209,7 +214,7 @@ converter:mapping
             sp:object [
                 sp:varName "labelSpecialisatie" ;
               ] ;
-            sp:predicate <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+            sp:predicate skos:prefLabel ;
             sp:subject [
                 sp:varName "specialisatie" ;
               ] ;
@@ -221,7 +226,7 @@ converter:mapping
                   sp:object [
                       sp:varName "definitionText" ;
                     ] ;
-                  sp:predicate <http://www.w3.org/2004/02/skos/core#definition> ;
+                  sp:predicate skos:definition ;
                   sp:subject [
                       sp:varName "specialisatie" ;
                     ] ;
@@ -325,8 +330,257 @@ converter:mapping
   spin:labelTemplate "mapping" ;
   rdfs:subClassOf spin:ConstructTemplates ;
 .
+<http://definities.politie.nl/id/begrip/BeperkingInRechtshandeling>
+  skos:scopeNote """Bij de beperking in handeling zijn er drie mogelijke waarden:
+1. Provisioneel bewind
+2. Onder curatele gesteld
+3. Onder bewind gesteld
+Elke aanvang of beëindiging van een beperking in rechtshandeling wordt gedaan als gevolg van een rechterlijke uitspraak. De beperking in handeling is gekoppeld aan de partij, omdat in uitzonderlijke situaties ook een rechtspersoon onder bewind gesteld kan worden. Voor het merendeel zal de beperking in handeling gelden voor de natuurlijk persoon.""" ;
+.
+<http://definities.politie.nl/id/begrip/BijzondereRechtstoestand>
+  skos:scopeNote """Een andere term die vaak gebruikt wordt voor de bijzondere rechtstoestand is insolventie. In het
+handelsregister kunnen drie vormen van insolventie worden geregistreerd:
+1. Faillissement
+2. Surseance van betaling
+3. Schuldsanering
+De eerste twee kunnen bij alle personen voorkomen incl. buitenlandse vennootschappen. De laatste geldt alleen voor natuurlijke personen. Een Europese verordening maakt het mogelijk een faillissement uit te spreken voor bijvoorbeeld een Belgische BVBA.
+Deze klasse geeft de classificatie aan van de soorten bijzondere rechts- toestanden die bij een persoon (natuurlijk persoon, samenwerkingsverband, rechtspersoon of buitenlandse vennootschap) geregistreerd kunnen worden.""" ;
+.
+<http://definities.politie.nl/id/begrip/BuitenlandseVennootschap>
+  skos:scopeNote """In het handelsregister wordt van een buitenlandseVennootschap opgenomen: het registratienummer uit het buitenlands register, de naam van het register en de plaats en land waar het register gehouden wordt.
+Wetgeving:
+Wet Formeel Buitenlandse Vennootschappen
+Artikel 1 sub f 4° juncto artikel 10 Hrb
+Artikel 24, 25 en 26 Hrb
+De BuitenlandseVennootschap is opgericht naar buitenlands recht en heeft een Vestiging van zijn
+Onderneming in Nederland of vervult een functie voor een andere Partij in het handelsregister.""" ;
+.
+<http://definities.politie.nl/id/begrip/Handelsnaam>
+  skos:definition """Een Handelsnaam is een naam waaronder een Onderneming of een Vestiging van een Onderneming
+handelt.""" ;
+  skos:scopeNote """Een Onderneming mag meerdere Handelsnamen hebben. De Vestiging heeft tenminste één, of meerdere, Handelsna(a)m(en) waarmee die naar buiten treedt.
+Bij privaatrechtelijke Rechtspersonen is de statutaire naam altijd ook een van de Handelsnamen van de bijbehorende Onderneming.
+De Handelsnamen van de Onderneming zijn een opsomming van alle Handelsnamen van alle Vestigingen.
+Indien een Handelsnaam dubbel voorkomt zal deze slechts éénmaal worden getoond""" ;
+.
+<http://definities.politie.nl/id/begrip/MaatschappelijkeActiviteit>
+  skos:scopeNote """De Maatschappelijke Activiteit is het totaal van alle activiteiten uitgeoefend door een Natuurlijk Persoon of een Niet-natuurlijk Persoon. Een Maatschappelijke Activiteit kan ook als Onderneming voorkomen.
+Een maatschappelijke activiteit is dus 1-op-1 met de Partij.
+Binnen de politie maken we voor een NP ook een NNP waaraan de maatschappelijke activiteit zit.""" ;
+.
+<http://definities.politie.nl/id/begrip/Melding>
+  rdfs:comment """Een melding kan door een persoon of een systeem gedaan worden. Meestal wordt een melding telefonisch gedaan maar kan ook mondeling door een burger aan hulpverlener gedaan worden. In het geval van een systeem kan gedacht worden aan alarm- of brandmeldsystemen. 
+Er kunnen meerdere meldingen kenbaar gemaakt zijn over een zelfde gebeurtenis. Niet elke melding wordt een incident.""" ;
+.
+<http://definities.politie.nl/id/begrip/Rechtspersoon>
+  skos:scopeNote """Rechtspersonen zijn limitatief opgenomen in de wetgeving (met name in het Burgerlijk Wetboek).
+Wetgeving:
+Artikel 2:1 t/m 2:3 BW
+Artikel 1 en 6 Hrw
+Artikel 12 Hrw
+-Privaatrechtelijke rechtspersonen:
+Artikel 22 Hrb
+Artikel 23 Hrb
+Artikel 28 Hrb
+Artikel 29 Hrb
+Artikel 30 Hrb
+-Overige privaatrechtelijke rechtspersonen:
+Artikel 32 Hrb
+-Kerkgenootschap
+Artikel 31 Hrb
+-Publiekrechtelijke rechtspersoon:
+Artikel 33 en 34 Hrb""" ;
+.
+<http://definities.politie.nl/id/begrip/RechtspersoonInOprichting>
+  skos:scopeNote """Het kan voor de Onderneming die door de RechtspersoonInOprichting zal worden gedreven, vereist zijn, al voor haar oprichting bepaalde rechtshandelingen te verrichten, zoals het bestellen van goederen of het huren van een bedrijfspand. Deze rechtshandelingen worden dan, ten einde de toekomstige Rechtspersoon te binden, aangegaan namens de RechtspersoonInOprichting.
+Wetgeving:
+Artikel 2:93 BW (voor de BV)
+Artikel 2:203 BW (voor de NV)
+Artikel 13 Hrb
+Het gaat om op te richten Rechtspersoon die een Onderneming in de zin van de handelsregisterwet heeft.""" ;
+.
+<http://definities.politie.nl/id/begrip/Rechtsvorm>
+  skos:scopeNote """Artikel 12 sub c
+Hrw
+let op: hierin verzamelen we de rechtsvorm uit het handelsregister, maar ook de rechtsvorm buitenlandse vennootschap, de rechtsvorm publiekrechtelijk, de rechtsvorm overige privaatrechtelijke en de rechtsvorm samenwerkingsverband.""" ;
+.
+<http://definities.politie.nl/id/begrip/Samenwerkingsverband>
+  skos:scopeNote """Samenwerkingsverbanden bestaan met het doel een Onderneming te drijven en mogen daarom niet
+geregistreerd worden zonder Onderneming.
+Wetgeving:
+Artikel 10 lid 3 Hrw
+Artikel 17 t/m 20 Hrb
+Als Samenwerkingsverband en worden ingeschreven in het handelsregister een VennootschapOnderFirma,
+CommanditaireVennootschap, Maatschap, Rederij.""" ;
+.
+<http://definities.politie.nl/id/begrip/Vestigingsnummer>
+  skos:scopeNote """Artikel 11 lid 1
+sub a Hrw,
+Artikel 14 lid 1
+sub a Hrw""" ;
+.
+<http://definities.politie.nl/im/id/begrip/DienstverbandDossier>
+  dct:source """Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014.
+""" ;
+.
+<http://definities.politie.nl/im/id/begrip/FocusDossier>
+  dct:source """Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014.
+""" ;
+.
+<http://definities.politie.nl/im/id/begrip/NietNatuurlijkPersoonSoort>
+  skos:scopeNote """In het NHR: rechtspersoon, samenwerkingsverband, buitenlandse vennootschap, eenmanszaak met meerdere eigenaren en rechtspersoon in oprichting.
+Binnen de politie voegen we hier ook de eenmanszaak aan toe. In het NHR is een eenmanszaak een natuurlijk persoon met een maatschappelijke activiteit. Voor de politie wordt dat dan een natuurlijk persoon met een eigenaar-relatie met een niet-natuurlijk persoon met een maatschappelijke activiteit.""" ;
+.
+<http://definities.politie.nl/im/id/begrip/SignaalDossier>
+  dct:source """Dossiermodel OPP ApplicatieArchitectuur (operationeel proces) versie 1.1 dd 17-01-2014.
+""" ;
+.
+<http://purl.org/iso25964/skos-thes#CompoundEquivalence>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/AllowedElementTypeType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/AllowedRelationshipTypeType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ConceptAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ConceptRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ConceptRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ConnectionRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ConnectionRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/DiagramsType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/DocumentationGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ElementRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ElementRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ElementsType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/FontType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/Grp.any>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/IdentifierGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/LabelGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/LangStringType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/LocationGroup>
+  rdfs:subClassOf owl:Thing ;
+.
 <http://www.opengroup.org/xsd/archimate/3.0/Model>
   sxml:prefix "archimate" ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/NameGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/NodeRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/NodeRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/OptionalIdentifierGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/OrganizationsType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/PropertiesGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/PropertiesType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/PropertyDefinitionRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/PropertyDefinitionRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/PropertyDefinitionsType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/PropertyType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/RGBColorType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ReferenceType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/RelationshipRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/RelationshipRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/RelationshipsType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/SizeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/StakeholdersType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/StereotypeRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/StereotypeRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/StyleType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ViewConceptRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ViewConceptRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ViewRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ViewRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ViewpointRefAttributeGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ViewpointRefGroup>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ViewpointsType>
+  rdfs:subClassOf owl:Thing ;
+.
+<http://www.opengroup.org/xsd/archimate/3.0/ViewsType>
+  rdfs:subClassOf owl:Thing ;
 .
 xsi:schemaLocation
   a owl:DatatypeProperty ;
@@ -338,8 +592,169 @@ xsi:type
   sxml:attribute "xsi:type" ;
   rdfs:label "xsi:type" ;
 .
-<http://www.w3.org/2004/02/skos/core#Concept>
+skos:Concept
   spin:rule [
       a converter:mapping ;
     ] ;
 .
+<http://www.w3.org/XML/1998/namespace#SpecialAttrs>
+  rdfs:subClassOf owl:Thing ;
+.
+[
+  sh:select """SELECT $this
+WHERE {
+	FILTER EXISTS {
+    	$this sh:class ?class .
+		$this sh:datatype ?datatype .
+	}
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a owl:Class
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/ontologie\\\\.politie\\\\.nl\\\\/def\\\\/[a-z0-9][a-zA-Z0-9]+\\\\#[A-Z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a owl:DatatypeProperty
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/ontologie\\\\.politie\\\\.nl\\\\/def\\\\/[a-z0-9][a-zA-Z0-9]+\\\\#[a-z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a owl:ObjectProperty
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/ontologie\\\\.politie\\\\.nl\\\\/def\\\\/[a-z0-9][a-zA-Z0-9]+\\\\#[a-z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a owl:Ontology
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/definities\\\\.politie\\\\.nl\\\\/[a-z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a owl:Ontology
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/ontologie\\\\.politie\\\\.nl\\\\/def\\\\/[a-z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a rdf:Property
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/ontologie\\\\.politie\\\\.nl\\\\/def\\\\/[a-z0-9][a-zA-Z0-9]+\\\\#[a-z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a sh:NodeShape
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/ontologie\\\\.politie\\\\.nl\\\\/def\\\\/[a-z0-9][a-zA-Z0-9]+\\\\#[A-Z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a skos:Concept
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/definities\\\\.politie\\\\.nl\\\\/(.+?)d\\\\/begrip\\\\/[A-Z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT $this
+WHERE{
+$this a skos:ConceptScheme
+ FILTER (!REGEX(STR($this), \"http\\\\:\\\\/\\\\/definities\\\\.politie\\\\.nl\\\\/id\\\\/begrippenstelsel\\\\/[A-Z0-9][a-zA-Z0-9]+$\"))
+}""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+           ?node rdf:type sh:NodeShape. 
+           ?node sh:property ?this.       
+           ?this rdf:type sh:PropertyShape
+           FILTER( regex(str(?node),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type dcterms:BibliographicResource
+        FILTER( regex(str(?this),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type owl:Class
+        FILTER( regex(str(?this),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type owl:DatatypeProperty
+        FILTER( regex(str(?this),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type owl:ObjectProperty
+        FILTER( regex(str(?this),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type owl:Ontology
+        FILTER( regex(str(?this),\"definities.politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type owl:Ontology
+        FILTER( regex(str(?this),\"ontologie.politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type rdf:Property
+        FILTER( regex(str(?this),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type sh:NodeShape
+        FILTER( regex(str(?this),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type skos:Collection
+        FILTER( regex(str(?this),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+      WHERE {
+        ?this rdf:type skos:ConceptScheme 
+        FILTER( regex(str(?this),\"politie.nl/\"))    
+      }""" ;
+].
+[
+  sh:select """SELECT ?this
+    WHERE {
+      ?this rdf:type skos:Concept
+      FILTER( regex(str(?this),\"politie.nl/\"))    
+    }""" ;
+].
