@@ -25,6 +25,15 @@
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
+endpoint:ImportRDFFromWorkspace
+  a sml:ImportRDFFromWorkspace ;
+  sm:next export:ApplySHACLRules ;
+  sm:nodeX 280 ;
+  sm:nodeY 45 ;
+  sml:baseURI "urn:x-evn-master:bedrijfsarchitectuur" ;
+  sml:ignoreImports true ;
+  rdfs:label "Import RDFFrom workspace" ;
+.
 endpoint:begrippenkader
   a owl:DatatypeProperty ;
   rdfs:label "begrippenkader" ;
@@ -37,9 +46,10 @@ endpoint:skos2archimate
       spl:optional true ;
       spl:predicate endpoint:begrippenkader ;
       spl:valueType xsd:string ;
+      sm:next endpoint:ImportRDFFromWorkspace ;
       sm:next export:ImportConverter ;
-      sm:nodeX -50 ;
-      sm:nodeY 274 ;
+      sm:nodeX 34 ;
+      sm:nodeY 286 ;
     ] ;
   sm:returnModule export:Response ;
   rdfs:comment "http://localhost:8083/tbl/sparqlmotion?id=skos2archimate&begrippenkader=im" ;

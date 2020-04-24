@@ -26,6 +26,14 @@
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
+export:ApplySHACLRules
+  a sml:ApplySHACLRules ;
+  sm:next export:ApplyTopSPIN ;
+  sm:nodeX 516 ;
+  sm:nodeY 237 ;
+  sml:replace false ;
+  rdfs:label "Apply SHACLRules" ;
+.
 export:ApplyTopSPIN
   a sml:ApplyTopSPIN ;
   sm:next export:ConvertRDFToXML ;
@@ -35,7 +43,7 @@ export:ApplyTopSPIN
   sml:predicate spin:rule ;
   sml:replace false ;
   sml:singlePass true ;
-  rdfs:label "Apply Inferencing" ;
+  rdfs:label "ApplyTopSpin" ;
 .
 export:ConvertRDFToXML
   a sml:ConvertRDFToXML ;
@@ -49,13 +57,13 @@ export:ConvertRDFToXML
 .
 export:ImportConverter
   a sml:ImportRDFFromWorkspace ;
-  sm:nodeX 200 ;
-  sm:nodeY 46 ;
+  sm:next export:ApplySHACLRules ;
+  sm:nodeX 43 ;
+  sm:nodeY 47 ;
   sml:baseURI "http://archimate.politie.nl/skos2archimate/converter" ;
   sml:ignoreImports false ;
   sml:sourceFilePath "converter.ttl" ;
   rdfs:label "Import converter" ;
-   sm:next export:ApplySHACLRules ;
 .
 export:ImportXMLFile_1
   a sml:ImportXMLFile ;
@@ -85,12 +93,3 @@ export:fixOrder
   sml:xml "{?archimatexml}"^^rdf:XMLLiteral ;
   rdfs:label "fix xml" ;
 .
-
-
-export:ApplySHACLRules
-  a sml:ApplySHACLRules ;
-  sm:next export:ApplyTopSPIN ;
-  sm:nodeX 516 ;
-  sm:nodeY 237 ;
-  sml:replace false ;
-  rdfs:label "Apply SHACLRules" ;
